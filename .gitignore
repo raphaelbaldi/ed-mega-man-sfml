@@ -1,7 +1,7 @@
 **/*.o
 *.lyx~
 .DS_Store
-#framework2
+bin/MegaMan
 *-build-desktop
 bin/examples
 teste/
