@@ -1,12 +1,3 @@
-/*
- *  PlayState.h
- *  Normal "play" state
- *
- *  Created by Marcelo Cohen on 08/13.
- *  Copyright 2013 PUCRS. All rights reserved.
- *
- */
-
 #ifndef PLAY_STATE_H_
 #define PLAY_STATE_H_
 
@@ -48,10 +39,10 @@ class PlayState : public cgf::GameState
     std::string walkStates[4];
     int currentDir;
 
-    int x, y;
     int dirx, diry;
 
     cgf::Sprite player;
+    cgf::Sprite enemy;
 
     sf::RenderWindow* screen;
     cgf::InputManager* im;
@@ -60,6 +51,8 @@ class PlayState : public cgf::GameState
 
     sf::Font font;
     sf::Text text;
+
+    sf::Color bombmanStageColor = sf::Color(57, 198, 255);
 
     // Centers the camera on the player position
     void centerMapOnPlayer();

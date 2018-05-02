@@ -1238,7 +1238,7 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1525188555 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
+1525221588 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
 	<iostream>
 	<cstdlib>
 	<string>
@@ -1246,7 +1246,7 @@
 	"Game.h"
 	"PlayState.h"
 
-1525188555 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
+1525222155 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
 	"GameState.h"
 	"Sprite.h"
 	"InputManager.h"
@@ -1266,4 +1266,11 @@
 	"InputManager.h"
 	<tmx/MapLoader.h>
 	<string>
+
+1525188555 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
+	<iostream>
+	<cmath>
+	"Game.h"
+	"PlayState_Solution.h"
+	"InputManager.h"
 
