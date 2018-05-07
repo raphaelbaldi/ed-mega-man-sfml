@@ -106,8 +106,8 @@
 		<Linker>
 			<Add directory="../../lib" />
 		</Linker>
-		<Unit filename="PlayState_Solution.cpp" />
-		<Unit filename="PlayState_Solution.h" />
+		<Unit filename="PlayState.cpp" />
+		<Unit filename="PlayState.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
