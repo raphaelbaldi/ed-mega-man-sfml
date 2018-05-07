@@ -2,6 +2,7 @@
 *.lyx~
 .DS_Store
 bin/MegaMan
+bin/MegaMan.exe
 *-build-desktop
 bin/examples
 teste/

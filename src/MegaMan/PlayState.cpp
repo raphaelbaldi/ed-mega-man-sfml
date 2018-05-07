@@ -10,42 +10,13 @@ using namespace std;
 
 void PlayState::init()
 {
-    //if (!font.loadFromFile("data/fonts/arial.ttf")) {
-    //    cout << "Cannot load arial.ttf font!" << endl;
-    //    exit(1);
-    //}
-    //text.setFont(font);
-    //text.setString(L"Testing text output in SFML");
-    //text.setCharacterSize(24); // in pixels
-    //text.setFillColor(sf::Color::Yellow);
-    //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    mm::StageArea* area = new mm::StageArea("bombman_01");
+    std::vector<mm::StageArea*>* areas = new std::vector<mm::StageArea*>();
+    areas->push_back(area);
+    currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
-    // TODO: get it from the Stage properties
-    map = new tmx::MapLoader("content/level/bombman");       // all maps/tiles will be read from data/maps
-    //map->AddSearchPath("content/level/bombman"); // e.g.: adding more search paths for tilesets
-    map->Load("bombman_01.tmx");
-
-    walkStates[0] = "walk-right";
-    walkStates[1] = "walk-left";
-    walkStates[2] = "walk-up";
-    walkStates[3] = "walk-down";
-    currentDir = RIGHT;
-    player.load("data/img/warrior.png",64,64,0,0,0,0,13,21,273);
-    player.setPosition(40,100);
-    player.loadAnimation("data/img/warrioranim.xml");
-    player.setAnimation(walkStates[currentDir]);
-    player.setAnimRate(15);
-    //player.setScale(1,1);
-    player.play();
-
-    enemy.load("data/img/Char14s.png");
-    enemy.setPosition(40,250);
-    enemy.setXspeed(50);
-    enemy.setScale(2,2);
-//    edirx = 1; // right
-
-    dirx = 0; // sprite dir: right (1), left (-1)
-    diry = 0; // down (1), up (-1)
+    dirx = 0;
+    diry = 0;
 
     im = cgf::InputManager::instance();
 
@@ -53,20 +24,17 @@ void PlayState::init()
     im->addKeyInput("right", sf::Keyboard::Right);
     im->addKeyInput("up", sf::Keyboard::Up);
     im->addKeyInput("down", sf::Keyboard::Down);
+    im->addKeyInput("jump", sf::Keyboard::Space);
+    im->addKeyInput("start", sf::Keyboard::Return);
+    im->addKeyInput("select", sf::Keyboard::Home);
     im->addKeyInput("quit", sf::Keyboard::Escape);
-    im->addKeyInput("stats", sf::Keyboard::S);
-    im->addMouseInput("rightclick", sf::Mouse::Right);
-
-    // Camera control
-    im->addKeyInput("zoomin", sf::Keyboard::Z);
-    im->addKeyInput("zoomout", sf::Keyboard::X);
 
     cout << "PlayState: Init" << endl;
 }
 
 void PlayState::cleanup()
 {
-    delete map;
+    delete currentStage;
     cout << "PlayState: Clean" << endl;
 }
 
@@ -115,34 +83,12 @@ void PlayState::handleEvents(cgf::Game* game)
         newDir = DOWN;
     }
 
-    if(im->testEvent("quit") || im->testEvent("rightclick"))
+    if(im->testEvent("quit"))
         game->quit();
 
-    if(im->testEvent("stats"))
-        game->toggleStats();
+    if(im->testEvent("start")) {
 
-    if(im->testEvent("zoomin")) {
-        view.zoom(1.01);
-        screen->setView(view);
     }
-    else if(im->testEvent("zoomout")) {
-        view.zoom(0.99);
-        screen->setView(view);
-    }
-
-    if(dirx == 0 && diry == 0) {
-        player.pause();
-    }
-    else {
-        if(currentDir != newDir) {
-            player.setAnimation(walkStates[newDir]);
-            currentDir = newDir;
-        }
-        player.play();
-    }
-
-    player.setXspeed(100*dirx);
-    player.setYspeed(100*diry);
 }
 
 void PlayState::update(cgf::Game* game)
@@ -151,8 +97,7 @@ void PlayState::update(cgf::Game* game)
     checkCollision(2, game, &player);
     if(checkCollision(2, game, &enemy))
         enemy.setXspeed(-enemy.getXspeed());
-    //enemy.update(game->getUpdateInterval());
-//    player.update(game->getUpdateInterval());
+
     if(player.bboxCollision(enemy)) {
         enemy.setVisible(false);
     }
@@ -162,17 +107,12 @@ void PlayState::update(cgf::Game* game)
 void PlayState::draw(cgf::Game* game)
 {
     screen = game->getScreen();
-    // TODO: get it from the Stage properties
-    screen->clear(bombmanStageColor);
-    map->Draw(*screen);          // draw all layers
-//    map->Draw(*screen, 1);     // draw only the second layer
-    screen->draw(player);
-    screen->draw(enemy);
-    screen->draw(text);
+    currentStage->Render(screen);
 }
 
 void PlayState::centerMapOnPlayer()
 {
+    /*
     sf::View view = screen->getView();
     sf::Vector2u mapsize = map->GetMapSize();
     sf::Vector2f viewsize = view.getSize();
@@ -196,11 +136,12 @@ void PlayState::centerMapOnPlayer()
 
     sf::Vector2f center(panX,panY);
     view.setCenter(center);
-    screen->setView(view);
+    screen->setView(view);*/
 }
 
 bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
 {
+    /*
     int i, x1, x2, y1, y2;
     bool bump = false;
 
@@ -229,11 +170,6 @@ bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
 
     float vx = offset.x;
     float vy = offset.y;
-
-    //cout << "px,py: " << px << " " << py << endl;
-
-    //cout << "tilesize " << tilesize.x << " " << tilesize.y << endl;
-    //cout << "mapsize " << mapsize.x << " " << mapsize.y << endl;
 
     // Test the horizontal movement first
     i = objsize.y > tilesize.y ? tilesize.y : objsize.y;
@@ -294,7 +230,6 @@ bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
     }
 
     // Now test the vertical movement
-
     i = objsize.x > tilesize.x ? tilesize.x : objsize.x;
 
     for (;;)
@@ -371,11 +306,14 @@ bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
         obj->setPosition(px, mapsize.y*tilesize.y - objsize.y - 1);
 
     return bump;
+    */
+    return false;
 }
 
 // Get a cell GID from the map (x and y in global coords)
 sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y)
 {
+    /*
     auto& layers = map->GetLayers();
     tmx::MapLayer& layer = layers[layernum];
     sf::Vector2u mapsize = map->GetMapSize();
@@ -385,4 +323,5 @@ sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y)
     int col = floor(x / tilesize.x);
     int row = floor(y / tilesize.y);
     return layer.tiles[row*mapsize.x + col].gid;
+    */
 }

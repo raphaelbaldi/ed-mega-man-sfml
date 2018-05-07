@@ -1,11 +1,14 @@
 #ifndef PLAY_STATE_H_
 #define PLAY_STATE_H_
 
+#include <string>
+
 #include "GameState.h"
 #include "Sprite.h"
 #include "InputManager.h"
-#include <tmx/MapLoader.h>
-#include <string>
+
+#include "Map\Stage.h"
+#include "Map\StageArea.h"
 
 class PlayState : public cgf::GameState
 {
@@ -47,12 +50,7 @@ class PlayState : public cgf::GameState
     sf::RenderWindow* screen;
     cgf::InputManager* im;
 
-    tmx::MapLoader* map;
-
-    sf::Font font;
-    sf::Text text;
-
-    sf::Color bombmanStageColor = sf::Color(57, 198, 255);
+    mm::Stage* currentStage;
 
     // Centers the camera on the player position
     void centerMapOnPlayer();
