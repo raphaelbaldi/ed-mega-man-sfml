@@ -13,6 +13,17 @@ namespace mm
             void render(sf::RenderWindow* screen);
 
         protected:
+            sf::Vector2f position;
+            sf::Vector2f moveDirection;
+            float moveSpeed;
+            float jumpSpeed;
+            float fallSpeed;
+            float bounceSpeed;
+            bool isJumping;
+            bool isFalling;
+            bool isAlive;
+            bool isInvulnerable;
+            int life;
 
         private:
     };
