@@ -10,13 +10,29 @@ using namespace std;
 
 void PlayState::init()
 {
-    mm::StageArea* area = new mm::StageArea("bombman_01");
-    std::vector<mm::StageArea*>* areas = new std::vector<mm::StageArea*>();
-    areas->push_back(area);
-    currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
+    // TODO: create a configuration file per stage to make initialization easier
+    mm::StageArea* bombman01 = new mm::StageArea("bombman_01");
+    mm::StageArea* bombman02 = new mm::StageArea("bombman_02");
+    mm::StageArea* bombman03 = new mm::StageArea("bombman_03");
+    mm::StageArea* bombman04 = new mm::StageArea("bombman_04");
+    mm::StageArea* bombman05 = new mm::StageArea("bombman_05");
+    mm::StageArea* bombman06 = new mm::StageArea("bombman_06");
+    mm::StageArea* bombman07_1 = new mm::StageArea("bombman_07_1");
+    mm::StageArea* bombman07_2 = new mm::StageArea("bombman_07_2");
+    mm::StageArea* bombman08 = new mm::StageArea("bombman_08");
 
-    dirx = 0;
-    diry = 0;
+    std::vector<mm::StageArea*>* areas = new std::vector<mm::StageArea*>();
+    areas->push_back(bombman01);
+    areas->push_back(bombman02);
+    areas->push_back(bombman03);
+    areas->push_back(bombman04);
+    areas->push_back(bombman05);
+    areas->push_back(bombman06);
+    areas->push_back(bombman07_1);
+    areas->push_back(bombman07_2);
+    areas->push_back(bombman08);
+
+    currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
     im = cgf::InputManager::instance();
 
@@ -60,7 +76,7 @@ void PlayState::handleEvents(cgf::Game* game)
             game->quit();
     }
 
-    dirx = diry = 0;
+    /*dirx = diry = 0;
     int newDir = currentDir;
 
     if(im->testEvent("left")) {
@@ -81,7 +97,7 @@ void PlayState::handleEvents(cgf::Game* game)
     if(im->testEvent("down")) {
         diry = 1;
         newDir = DOWN;
-    }
+    }*/
 
     if(im->testEvent("quit"))
         game->quit();
@@ -94,6 +110,7 @@ void PlayState::handleEvents(cgf::Game* game)
 void PlayState::update(cgf::Game* game)
 {
     screen = game->getScreen();
+    /*
     checkCollision(2, game, &player);
     if(checkCollision(2, game, &enemy))
         enemy.setXspeed(-enemy.getXspeed());
@@ -101,7 +118,7 @@ void PlayState::update(cgf::Game* game)
     if(player.bboxCollision(enemy)) {
         enemy.setVisible(false);
     }
-    centerMapOnPlayer();
+    centerMapOnPlayer();*/
 }
 
 void PlayState::draw(cgf::Game* game)

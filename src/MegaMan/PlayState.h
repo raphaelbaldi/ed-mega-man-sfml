@@ -7,8 +7,8 @@
 #include "Sprite.h"
 #include "InputManager.h"
 
-#include "Map\Stage.h"
-#include "Map\StageArea.h"
+#include "Map/Stage.h"
+#include "Map/StageArea.h"
 
 class PlayState : public cgf::GameState
 {
@@ -40,12 +40,6 @@ class PlayState : public cgf::GameState
 
     enum { RIGHT=0, LEFT, UP, DOWN };
     std::string walkStates[4];
-    int currentDir;
-
-    int dirx, diry;
-
-    cgf::Sprite player;
-    cgf::Sprite enemy;
 
     sf::RenderWindow* screen;
     cgf::InputManager* im;

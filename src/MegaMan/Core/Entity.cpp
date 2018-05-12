@@ -10,7 +10,7 @@ mm::Entity::~Entity()
     //dtor
 }
 
-mm::Entity::render(sf::RenderWindow* screen)
+void mm::Entity::render(sf::RenderWindow* screen)
 {
     //render entity
 }

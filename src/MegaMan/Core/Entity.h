@@ -10,7 +10,7 @@ namespace mm
         public:
             Entity();
             virtual ~Entity();
-            render(sf::RenderWindow* screen);
+            void render(sf::RenderWindow* screen);
 
         protected:
 
