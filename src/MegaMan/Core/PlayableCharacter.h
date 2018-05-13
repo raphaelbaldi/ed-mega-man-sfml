@@ -11,6 +11,7 @@ namespace mm
         public:
             PlayableCharacter();
             virtual ~PlayableCharacter();
+            void HandleEvents(cgf::InputManager* inputManager);
 
         protected:
 

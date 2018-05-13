@@ -1246,13 +1246,15 @@
 	"Game.h"
 	"PlayState.h"
 
-1526221217 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
+1526231241 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
 	<string>
 	"GameState.h"
 	"Sprite.h"
 	"InputManager.h"
 	"Map/Stage.h"
 	"Map/StageArea.h"
+	"Core/Entity.h"
+	"Core/PlayableCharacter.h"
 
 1525188555 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState_Solution.cpp
 	<iostream>
@@ -1268,7 +1270,7 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1526151221 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
+1526231462 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
 	<iostream>
 	<cmath>
 	"Game.h"
@@ -2514,16 +2516,18 @@
 1526150314 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.h
 	"Entity.h"
 
-1526218664 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
+1526231474 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
+	"Game.h"
 	"Sprite.h"
+	"InputManager.h"
 
-1526221218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
+1526231646 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
 	"Entity.h"
 
-1526221218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
+1526231493 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
 	"PlayableCharacter.h"
 
-1526150314 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.h
+1526231575 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.h
 	"Character.h"
 
 1526221305 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/Stage.h

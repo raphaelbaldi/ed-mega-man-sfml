@@ -1,7 +1,9 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include "Game.h"
 #include "Sprite.h"
+#include "InputManager.h"
 
 namespace mm
 {
@@ -10,9 +12,13 @@ namespace mm
         public:
             Entity();
             virtual ~Entity();
-            void render(sf::RenderWindow* screen);
+            virtual void Render(sf::RenderWindow* screen);
+            virtual void Update(cgf::Game* game);
+            virtual void HandleEvents(cgf::InputManager* inputManager);
+            sf::Vector2f GetPosition();
 
         protected:
+            cgf::Sprite sprite;
             sf::Vector2f position;
             sf::Vector2f moveDirection;
             float moveSpeed;
@@ -24,6 +30,7 @@ namespace mm
             bool isFalling;
             bool isAlive;
             bool isInvulnerable;
+            bool isMovingLeft;
             int life;
             int totalLife;
 

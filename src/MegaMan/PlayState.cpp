@@ -31,6 +31,10 @@ void PlayState::init() {
     areas->push_back(bombman07_2);
     areas->push_back(bombman08);
 
+    entities = new std::vector<mm::Entity*>();
+    mainCharacter = new mm::PlayableCharacter();
+    entities->push_back(mainCharacter);
+
     currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
     im = cgf::InputManager::instance();
@@ -71,28 +75,11 @@ void PlayState::handleEvents(cgf::Game* game) {
         }
     }
 
-    /*dirx = diry = 0;
-    int newDir = currentDir;
-
-    if(im->testEvent("left")) {
-        dirx = -1;
-        newDir = LEFT;
+    for (int i = 0; i < entities->size(); i++) {
+        if (nullptr != (*entities)[i]) {
+            (*entities)[i]->HandleEvents(im);
+        }
     }
-
-    if(im->testEvent("right")) {
-        dirx = 1;
-        newDir = RIGHT;
-    }
-
-    if(im->testEvent("up")) {
-        diry = -1;
-        newDir = UP;
-    }
-
-    if(im->testEvent("down")) {
-        diry = 1;
-        newDir = DOWN;
-    }*/
 
     if(im->testEvent("quit"))
         game->quit();
@@ -103,11 +90,21 @@ void PlayState::handleEvents(cgf::Game* game) {
 }
 
 void PlayState::update(cgf::Game* game) {
+    for (int i = 0; i < entities->size(); i++) {
+        if (nullptr != (*entities)[i]) {
+            (*entities)[i]->Update(game);
+        }
+    }
 }
 
 void PlayState::draw(cgf::Game* game) {
-    //currentStage->CenterOnPosition(game->getScreen(), mainCharacter->GetPosition());
+    currentStage->CenterOnPosition(game->getScreen(), mainCharacter->GetPosition());
     currentStage->Render(game->getScreen());
+    for (int i = 0; i < entities->size(); i++) {
+        if (nullptr != (*entities)[i]) {
+            (*entities)[i]->Render(game->getScreen());
+        }
+    }
 }
 
 bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj) {
