@@ -16,7 +16,9 @@ namespace mm
             void SetStage(mm::Stage* stage);
 
         protected:
+            sf::Vector2f moveDirection;
             bool isClimbingStair;
+            bool jumpPressed;
             mm::Stage* stage;
             void Animate();
             void Update(cgf::Game* game);

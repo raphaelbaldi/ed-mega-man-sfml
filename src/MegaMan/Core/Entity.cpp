@@ -3,17 +3,16 @@
 #include <iostream>
 
 mm::Entity::Entity() {
-    moveDirection.x = 0;
-    moveDirection.y = 0;
+    speed.x = 0;
+    speed.y = 0;
     moveSpeed = 15;
     jumpSpeed = 15;
     currentJumpTime = 0;
     maxJumpTime = 1;
-    fallSpeed = 0;
-    maxFallSpeed = 64;
+    fallSpeed = 15;
     bounceSpeed = 15;
     shootRate = 1;
-    shootCooldown = 0.2;
+    shootCooldown = 1;
     isTakingDamage = false;
     isJumping = false;
     isFalling = false;
@@ -32,8 +31,8 @@ mm::Entity::~Entity() {
 
 void mm::Entity::Update(cgf::Game* game) {
     sprite.update(game->getUpdateInterval());
-    position.x = sprite.getPosition().x + sprite.getSize().x / 2;
-    position.y = sprite.getPosition().y;
+    position.x = sprite.getPosition().x + sprite.getSize().x * 0.5;
+    position.y = sprite.getPosition().y + sprite.getSize().x * 0.1;
 }
 
 void mm::Entity::Render(sf::RenderWindow* screen) {

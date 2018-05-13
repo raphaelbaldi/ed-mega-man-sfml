@@ -5,8 +5,6 @@
 #include "Sprite.h"
 #include "InputManager.h"
 
-#define GRAVITY 9
-
 namespace mm
 {
     class Entity
@@ -21,7 +19,7 @@ namespace mm
 
         protected:
             cgf::Sprite sprite;
-            sf::Vector2f moveDirection;
+            sf::Vector2f speed;
             sf::Vector2f position;
             std::string currentAnimation;
             float moveSpeed;
@@ -29,7 +27,6 @@ namespace mm
             float currentJumpTime;
             float maxJumpTime; // Hold jump to jump higher
             float fallSpeed;
-            float maxFallSpeed;
             float bounceSpeed;
             float shootRate;
             float shootCooldown;

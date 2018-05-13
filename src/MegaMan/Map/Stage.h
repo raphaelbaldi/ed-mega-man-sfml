@@ -5,6 +5,7 @@
 #include <string>
 #include <tmx/MapLoader.h>
 
+#include "Game.h"
 #include "Sprite.h"
 #include "StageArea.h"
 
@@ -22,6 +23,7 @@ namespace mm
             virtual void Render(sf::RenderWindow* screen);
             void CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position);
             sf::Uint16 GetCellFromMap(uint8_t layer, sf::Vector2f position);
+            bool CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object);
 
         protected:
             std::vector<mm::StageArea*>* areas;
