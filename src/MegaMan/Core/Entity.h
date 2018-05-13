@@ -21,6 +21,7 @@ namespace mm
             cgf::Sprite sprite;
             sf::Vector2f moveDirection;
             sf::Vector2f position;
+            std::string currentAnimation;
             float moveSpeed;
             float jumpSpeed;
             float currentJumpTime;
@@ -36,12 +37,14 @@ namespace mm
             bool isInvulnerable;
             bool isFacingLeft;
             bool isMoving;
+            bool isShooting;
             int life;
             int totalLife;
 
             virtual void Animate();
-            bool CanShoot();
             virtual void Shoot();
+            void SetAnimation(std::string newAnimation);
+            bool CanShoot();
 
         private:
     };

@@ -33,19 +33,11 @@ class PlayState : public cgf::GameState
 
     private:
         static PlayState m_PlayState;
-        enum { RIGHT=0, LEFT, UP, DOWN };
-        sf::RenderWindow* screen;
-        cgf::InputManager* im;
 
+        cgf::InputManager* inputManager;
         mm::Stage* currentStage;
         mm::PlayableCharacter* mainCharacter;
         std::vector<mm::Entity*>* entities;
-
-        // Checks collision between a sprite and a map layer
-        bool checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj);
-
-        // get a cell GID from the map (x and y in world coords)
-        sf::Uint16 getCellFromMap(uint8_t layernum, float x, float y);
 };
 
 #endif

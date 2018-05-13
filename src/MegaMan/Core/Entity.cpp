@@ -20,6 +20,8 @@ mm::Entity::Entity() {
     isInvulnerable = false;
     isFacingLeft = false;
     isMoving = false;
+    isShooting = false;
+    currentAnimation = "";
     life = 100;
     totalLife = 100;
 }
@@ -43,6 +45,17 @@ sf::Vector2f mm::Entity::GetPosition() {
 }
 
 void mm::Entity::HandleEvents(cgf::InputManager* inputManager) {
+}
+
+void mm::Entity::SetAnimation(std::string newAnimation) {
+    if(newAnimation.compare(currentAnimation) == 0) {
+        return;
+    }
+
+    sprite.setAnimation(newAnimation);
+    sprite.play();
+
+    currentAnimation = newAnimation;
 }
 
 void mm::Entity::Animate() {
