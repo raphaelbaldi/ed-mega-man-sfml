@@ -44,6 +44,7 @@ void PlayState::init() {
     im->addKeyInput("up", sf::Keyboard::Up);
     im->addKeyInput("down", sf::Keyboard::Down);
     im->addKeyInput("jump", sf::Keyboard::Space);
+    im->addKeyInput("shoot", sf::Keyboard::A);
     im->addKeyInput("start", sf::Keyboard::Return);
     im->addKeyInput("select", sf::Keyboard::Home);
     im->addKeyInput("quit", sf::Keyboard::Escape);

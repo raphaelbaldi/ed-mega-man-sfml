@@ -14,6 +14,7 @@ loop   => looping animation (default)
     <sequence name="stairs"       start="8"  end="9"  loop="true"  />
     <sequence name="stairs-top"   start="10" end="10" loop="false" />
     <sequence name="stairs-shoot" start="11" end="11" loop="false" />
-    <sequence name="idle"         start="12" end="13" loop="true"  />
+    <sequence name="idle"         start="12" end="12" loop="false" />
+    <sequence name="idle-blink"   start="12" end="13" loop="false" />
     <sequence name="run"          start="14" end="16" loop="true"  />
 </animation>

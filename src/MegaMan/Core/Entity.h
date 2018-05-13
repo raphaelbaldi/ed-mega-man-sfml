@@ -19,20 +19,29 @@ namespace mm
 
         protected:
             cgf::Sprite sprite;
-            sf::Vector2f position;
             sf::Vector2f moveDirection;
+            sf::Vector2f position;
             float moveSpeed;
             float jumpSpeed;
+            float currentJumpTime;
+            float maxJumpTime; // Hold jump to jump higher
             float fallSpeed;
             float bounceSpeed;
-            bool takingDamage;
+            float shootRate;
+            float shootCooldown;
+            bool isTakingDamage;
             bool isJumping;
             bool isFalling;
             bool isAlive;
             bool isInvulnerable;
-            bool isMovingLeft;
+            bool isFacingLeft;
+            bool isMoving;
             int life;
             int totalLife;
+
+            virtual void Animate();
+            bool CanShoot();
+            virtual void Shoot();
 
         private:
     };

@@ -14,6 +14,9 @@ namespace mm
             void HandleEvents(cgf::InputManager* inputManager);
 
         protected:
+            bool isClimbingStair;
+            void Animate();
+            void Shoot();
 
         private:
     };
