@@ -17,6 +17,7 @@ namespace mm
             virtual ~Stage();
             virtual void SetArea(int newArea);
             virtual void Render(sf::RenderWindow* screen);
+            void CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position);
 
         protected:
             std::vector<mm::StageArea*>* areas;

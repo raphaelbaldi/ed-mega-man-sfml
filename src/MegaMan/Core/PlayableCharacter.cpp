@@ -1,11 +1,7 @@
 #include "PlayableCharacter.h"
 
-mm::PlayableCharacter::PlayableCharacter()
-{
-    //ctor
+mm::PlayableCharacter::PlayableCharacter() {
 }
 
-mm::PlayableCharacter::~PlayableCharacter()
-{
-    //dtor
+mm::PlayableCharacter::~PlayableCharacter() {
 }

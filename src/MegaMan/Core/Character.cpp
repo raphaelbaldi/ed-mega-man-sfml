@@ -1,11 +1,7 @@
 #include "Character.h"
 
-mm::Character::Character()
-{
-    //ctor
+mm::Character::Character() {
 }
 
-mm::Character::~Character()
-{
-    //dtor
+mm::Character::~Character() {
 }

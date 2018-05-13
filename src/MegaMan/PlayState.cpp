@@ -8,8 +8,7 @@ PlayState PlayState::m_PlayState;
 
 using namespace std;
 
-void PlayState::init()
-{
+void PlayState::init() {
     // TODO: create a configuration file per stage to make initialization easier
     mm::StageArea* bombman01 = new mm::StageArea("bombman_01");
     mm::StageArea* bombman02 = new mm::StageArea("bombman_02");
@@ -48,32 +47,28 @@ void PlayState::init()
     cout << "PlayState: Init" << endl;
 }
 
-void PlayState::cleanup()
-{
+void PlayState::cleanup() {
     delete currentStage;
     cout << "PlayState: Clean" << endl;
 }
 
-void PlayState::pause()
-{
+void PlayState::pause() {
     cout << "PlayState: Paused" << endl;
 }
 
-void PlayState::resume()
-{
+void PlayState::resume() {
     cout << "PlayState: Resumed" << endl;
 }
 
-void PlayState::handleEvents(cgf::Game* game)
-{
+void PlayState::handleEvents(cgf::Game* game) {
     screen = game->getScreen();
     sf::View view = screen->getView(); // gets the view
     sf::Event event;
 
-    while (screen->pollEvent(event))
-    {
-        if(event.type == sf::Event::Closed)
+    while (screen->pollEvent(event)) {
+        if(event.type == sf::Event::Closed) {
             game->quit();
+        }
     }
 
     /*dirx = diry = 0;
@@ -107,57 +102,15 @@ void PlayState::handleEvents(cgf::Game* game)
     }
 }
 
-void PlayState::update(cgf::Game* game)
-{
-    screen = game->getScreen();
-    /*
-    checkCollision(2, game, &player);
-    if(checkCollision(2, game, &enemy))
-        enemy.setXspeed(-enemy.getXspeed());
-
-    if(player.bboxCollision(enemy)) {
-        enemy.setVisible(false);
-    }
-    centerMapOnPlayer();*/
+void PlayState::update(cgf::Game* game) {
 }
 
-void PlayState::draw(cgf::Game* game)
-{
-    screen = game->getScreen();
-    currentStage->Render(screen);
+void PlayState::draw(cgf::Game* game) {
+    //currentStage->CenterOnPosition(game->getScreen(), mainCharacter->GetPosition());
+    currentStage->Render(game->getScreen());
 }
 
-void PlayState::centerMapOnPlayer()
-{
-    /*
-    sf::View view = screen->getView();
-    sf::Vector2u mapsize = map->GetMapSize();
-    sf::Vector2f viewsize = view.getSize();
-    viewsize.x /= 2;
-    viewsize.y /= 2;
-    sf::Vector2f pos = player.getPosition();
-
-    float panX = viewsize.x; // minimum pan
-    if(pos.x >= viewsize.x)
-        panX = pos.x;
-
-    if(panX >= mapsize.x - viewsize.x)
-        panX = mapsize.x - viewsize.x;
-
-    float panY = viewsize.y; // minimum pan
-    if(pos.y >= viewsize.y)
-        panY = pos.y;
-
-    if(panY >= mapsize.y - viewsize.y)
-        panY = mapsize.y - viewsize.y;
-
-    sf::Vector2f center(panX,panY);
-    view.setCenter(center);
-    screen->setView(view);*/
-}
-
-bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
-{
+bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj) {
     /*
     int i, x1, x2, y1, y2;
     bool bump = false;
@@ -328,8 +281,7 @@ bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
 }
 
 // Get a cell GID from the map (x and y in global coords)
-sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y)
-{
+sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y) {
     /*
     auto& layers = map->GetLayers();
     tmx::MapLayer& layer = layers[layernum];

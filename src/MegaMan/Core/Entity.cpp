@@ -1,16 +1,10 @@
 #include "Entity.h"
 
-mm::Entity::Entity()
-{
-    //ctor
+mm::Entity::Entity() {
 }
 
-mm::Entity::~Entity()
-{
-    //dtor
+mm::Entity::~Entity() {
 }
 
-void mm::Entity::render(sf::RenderWindow* screen)
-{
-    //render entity
+void mm::Entity::render(sf::RenderWindow* screen) {
 }

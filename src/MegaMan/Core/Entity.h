@@ -19,11 +19,13 @@ namespace mm
             float jumpSpeed;
             float fallSpeed;
             float bounceSpeed;
+            bool takingDamage;
             bool isJumping;
             bool isFalling;
             bool isAlive;
             bool isInvulnerable;
             int life;
+            int totalLife;
 
         private:
     };

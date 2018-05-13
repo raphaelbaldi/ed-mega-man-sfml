@@ -46,9 +46,6 @@ class PlayState : public cgf::GameState
 
     mm::Stage* currentStage;
 
-    // Centers the camera on the player position
-    void centerMapOnPlayer();
-
     // Checks collision between a sprite and a map layer
     bool checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj);
 
