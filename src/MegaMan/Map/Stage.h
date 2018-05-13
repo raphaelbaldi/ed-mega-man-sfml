@@ -7,6 +7,9 @@
 
 #include "Sprite.h"
 #include "StageArea.h"
+
+#define COLLISION_LAYER 2
+
 namespace mm
 {
     class Stage
@@ -18,6 +21,7 @@ namespace mm
             virtual void SetArea(int newArea);
             virtual void Render(sf::RenderWindow* screen);
             void CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position);
+            sf::Uint16 GetCellFromMap(uint8_t layer, sf::Vector2f position);
 
         protected:
             std::vector<mm::StageArea*>* areas;

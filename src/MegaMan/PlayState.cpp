@@ -27,11 +27,12 @@ void PlayState::init() {
     areas->push_back(bombman07_2);
     areas->push_back(bombman08);
 
+    currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
+
     entities = new std::vector<mm::Entity*>();
     mainCharacter = new mm::PlayableCharacter();
+    mainCharacter->SetStage(currentStage);
     entities->push_back(mainCharacter);
-
-    currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
     inputManager = cgf::InputManager::instance();
     inputManager->addKeyInput("left", sf::Keyboard::Left);

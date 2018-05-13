@@ -11,10 +11,16 @@ mm::PlayableCharacter::PlayableCharacter() {
     sprite.setMirror(!isFacingLeft);
 
     moveSpeed = 96;
+    fallSpeed = 96;
     isClimbingStair = false;
+    stage = nullptr;
 }
 
 mm::PlayableCharacter::~PlayableCharacter() {
+}
+
+void mm::PlayableCharacter::SetStage(mm::Stage* _stage) {
+    stage = _stage;
 }
 
 void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager) {
@@ -123,10 +129,39 @@ void mm::PlayableCharacter::Animate() {
     SetAnimation(newAnimation);
 }
 
+void mm::PlayableCharacter::Update(cgf::Game* game) {
+    if(!IsGrounded()) {
+        if(!isJumping && !isClimbingStair) {
+            isFalling = true;
+            fallSpeed += GRAVITY * game->getUpdateInterval();
+            if(fallSpeed > maxFallSpeed) {
+                fallSpeed = maxFallSpeed;
+            }
+            sprite.setYspeed(fallSpeed);
+        }
+    } else {
+        isFalling = false;
+        fallSpeed = 0;
+    }
+
+    Entity::Update(game);
+}
+
+bool mm::PlayableCharacter::IsGrounded() {
+    if(nullptr == stage) {
+        return false;
+    }
+
+    sf::Vector2f* charPosition = new sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y + sprite.getSize().y);
+    sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
+    return mapCell != 0;
+}
+
 void mm::PlayableCharacter::Shoot() {
 }
 
 /*
+SAMPLE CODE FOR COLLISION DETECTION
 bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj) {
     int i, x1, x2, y1, y2;
     bool bump = false;
@@ -293,16 +328,4 @@ bool PlayState::checkCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obj)
 
     return bump;
 }
-
-// Get a cell GID from the map (x and y in global coords)
-sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y) {
-    auto& layers = map->GetLayers();
-    tmx::MapLayer& layer = layers[layernum];
-    sf::Vector2u mapsize = map->GetMapSize();
-    sf::Vector2u tilesize = map->GetMapTileSize();
-    mapsize.x /= tilesize.x;
-    mapsize.y /= tilesize.y;
-    int col = floor(x / tilesize.x);
-    int row = floor(y / tilesize.y);
-    return layer.tiles[row*mapsize.x + col].gid;
-}*/
+*/

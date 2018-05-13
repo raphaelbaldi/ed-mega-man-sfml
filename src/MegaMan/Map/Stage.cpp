@@ -40,21 +40,43 @@ void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position
     viewsize.x /= 2;
     viewsize.y /= 2;
 
-    float panX = viewsize.x; // minimum pan
-    if(position.x >= viewsize.x)
+    float panX = viewsize.x;
+    if(position.x >= viewsize.x) {
         panX = position.x;
+    }
 
-    if(panX >= mapsize.x - viewsize.x)
+    if(panX >= mapsize.x - viewsize.x) {
         panX = mapsize.x - viewsize.x;
+    }
 
-    float panY = viewsize.y; // minimum pan
-    if(position.y >= viewsize.y)
+    float panY = viewsize.y;
+    if(position.y >= viewsize.y) {
         panY = position.y;
+    }
 
-    if(panY >= mapsize.y - viewsize.y)
+    if(panY >= mapsize.y - viewsize.y) {
         panY = mapsize.y - viewsize.y;
+    }
 
     sf::Vector2f center(panX,panY);
     view.setCenter(center);
     screen->setView(view);
+}
+
+sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, sf::Vector2f position) {
+    auto& layers = mapLoader->GetLayers();
+    tmx::MapLayer& layer = layers[layerIndex];
+    sf::Vector2u mapsize = mapLoader->GetMapSize();
+    sf::Vector2u tilesize = mapLoader->GetMapTileSize();
+    mapsize.x /= tilesize.x;
+    mapsize.y /= tilesize.y;
+    int col = floor(position.x / tilesize.x);
+    int row = floor(position.y / tilesize.y);
+    int target = row*mapsize.x + col;
+
+    if(target < 0 || target >= layer.tiles.size()) {
+        return 0;
+    }
+
+    return layer.tiles[target].gid;
 }

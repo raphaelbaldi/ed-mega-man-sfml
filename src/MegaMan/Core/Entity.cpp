@@ -9,7 +9,8 @@ mm::Entity::Entity() {
     jumpSpeed = 15;
     currentJumpTime = 0;
     maxJumpTime = 1;
-    fallSpeed = 9.8;
+    fallSpeed = 0;
+    maxFallSpeed = 64;
     bounceSpeed = 15;
     shootRate = 1;
     shootCooldown = 0.2;

@@ -5,6 +5,8 @@
 #include "Sprite.h"
 #include "InputManager.h"
 
+#define GRAVITY 9
+
 namespace mm
 {
     class Entity
@@ -27,6 +29,7 @@ namespace mm
             float currentJumpTime;
             float maxJumpTime; // Hold jump to jump higher
             float fallSpeed;
+            float maxFallSpeed;
             float bounceSpeed;
             float shootRate;
             float shootCooldown;
