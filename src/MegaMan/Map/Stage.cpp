@@ -64,6 +64,34 @@ void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position
 }
 
 bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
+    // Get the limits of the map
+    sf::Vector2u mapsize = mapLoader->GetMapSize();
+
+    // Get the width and height of a single tile
+    sf::Vector2u tilesize = mapLoader->GetMapTileSize();
+
+    mapsize.x /= tilesize.x;
+    mapsize.y /= tilesize.y;
+    mapsize.x--;
+    mapsize.y--;
+
+    // Get the height and width of the object (in this case, 100% of a tile)
+    sf::Vector2u objsize = object->getSize();
+    objsize.x *= object->getScale().x;
+    objsize.y *= object->getScale().y;
+
+    float px = object->getPosition().x;
+    float py = object->getPosition().y;
+
+    double deltaTime = game->getUpdateInterval();
+
+
+
+    return false;
+}
+
+/*
+bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
     int i, x1, x2, y1, y2;
     bool bump = false;
 
@@ -251,7 +279,7 @@ bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obje
 
     return bump;
 }
-
+*/
 
 sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, sf::Vector2f position) {
     auto& layers = mapLoader->GetLayers();
@@ -269,4 +297,12 @@ sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, sf::Vector2f position) 
     }
 
     return layer.tiles[target].gid;
+}
+
+sf::Vector2f mm::Stage::GetRoundPosition(sf::Vector2f position) {
+    sf::Vector2u tilesize = mapLoader->GetMapTileSize();
+    float x = floor(position.x / tilesize.x) * tilesize.x;
+    float y = floor(position.y / tilesize.y) * tilesize.y;
+    sf::Vector2f roundPos = sf::Vector2f(x, y);
+    return roundPos;
 }

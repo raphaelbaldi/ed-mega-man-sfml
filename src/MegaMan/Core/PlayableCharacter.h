@@ -14,6 +14,7 @@ namespace mm
             virtual ~PlayableCharacter();
             void HandleEvents(cgf::InputManager* inputManager);
             void SetStage(mm::Stage* stage);
+            void Render(sf::RenderWindow* window);
 
         protected:
             sf::Vector2f moveDirection;
@@ -24,6 +25,7 @@ namespace mm
             void Update(cgf::Game* game);
             void Shoot();
             bool IsGrounded();
+            sf::RectangleShape* rectangle;
 
         private:
     };

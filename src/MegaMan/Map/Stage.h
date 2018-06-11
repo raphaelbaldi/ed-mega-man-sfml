@@ -24,6 +24,7 @@ namespace mm
             void CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position);
             sf::Uint16 GetCellFromMap(uint8_t layer, sf::Vector2f position);
             bool CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object);
+            sf::Vector2f GetRoundPosition(sf::Vector2f position);
 
         protected:
             std::vector<mm::StageArea*>* areas;

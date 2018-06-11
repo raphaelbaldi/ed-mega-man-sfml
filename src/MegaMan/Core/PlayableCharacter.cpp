@@ -20,6 +20,15 @@ mm::PlayableCharacter::PlayableCharacter() {
 
     moveDirection.x = 0;
     moveDirection.y = 0;
+
+    rectangle = new sf::RectangleShape(sf::Vector2f(sprite.getSize().x, sprite.getSize().y));
+    rectangle->setFillColor(sf::Color(255, 0, 0));
+}
+
+void mm::PlayableCharacter::Render(sf::RenderWindow* window) {
+    mm::Entity::Render(window);
+    rectangle->setPosition(sprite.getPosition());
+    //window->draw(*rectangle);
 }
 
 mm::PlayableCharacter::~PlayableCharacter() {
@@ -166,13 +175,33 @@ void mm::PlayableCharacter::Update(cgf::Game* game) {
         isFalling = false;
     }
 
-    if(nullptr != stage) {
-        // TODO: better collision detection, with bitwise result to
-        // replace grouding detection
-        stage->CheckCollision(COLLISION_LAYER, game, &sprite);
-    }
-
     Entity::Update(game);
+
+    if(nullptr != stage) {
+        sf::Vector2f* charPosition = nullptr;
+        if (moveDirection.x > 0) {
+            charPosition = new sf::Vector2f(sprite.getPosition().x + sprite.getSize().x, sprite.getPosition().y + sprite.getSize().y * 0.9f);
+            sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
+
+            if (mapCell != 0) {
+                sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
+                sprite.setPosition(newPosition.x - sprite.getSize().x * 0.5f, sprite.getPosition().y);
+                sprite.setXspeed(0);
+            }
+        } else if (moveDirection.x < 0) {
+            charPosition = new sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y + sprite.getSize().y * 0.9f);
+            sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
+            if (mapCell != 0) {
+                sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
+                sprite.setPosition(newPosition.x + sprite.getSize().x * 0.5f, sprite.getPosition().y);
+                sprite.setXspeed(0);
+            }
+        }
+
+        if(nullptr != charPosition) {
+            delete(charPosition);
+        }
+    }
 }
 
 bool mm::PlayableCharacter::IsGrounded() {
@@ -180,8 +209,17 @@ bool mm::PlayableCharacter::IsGrounded() {
         return false;
     }
 
-    sf::Vector2f* charPosition = new sf::Vector2f(position.x, position.y + sprite.getSize().y);
+    // Check position just below the character (mid bottom)
+    sf::Vector2f* charPosition = new sf::Vector2f(sprite.getPosition().x + sprite.getSize().x * 0.5f, position.y + sprite.getSize().y);
     sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
+
+    if (mapCell != 0 && isFalling) {
+        sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
+        sprite.setPosition(sprite.getPosition().x, newPosition.y - sprite.getSize().y);
+    }
+
+    delete(charPosition);
+
     return mapCell != 0;
 }
 
