@@ -63,42 +63,13 @@ void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position
     screen->setView(view);
 }
 
-bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
-    // Get the limits of the map
-    sf::Vector2u mapsize = mapLoader->GetMapSize();
-
-    // Get the width and height of a single tile
-    sf::Vector2u tilesize = mapLoader->GetMapTileSize();
-
-    mapsize.x /= tilesize.x;
-    mapsize.y /= tilesize.y;
-    mapsize.x--;
-    mapsize.y--;
-
-    // Get the height and width of the object (in this case, 100% of a tile)
-    sf::Vector2u objsize = object->getSize();
-    objsize.x *= object->getScale().x;
-    objsize.y *= object->getScale().y;
-
-    float px = object->getPosition().x;
-    float py = object->getPosition().y;
-
-    double deltaTime = game->getUpdateInterval();
-
-
-
-    return false;
-}
-
-/*
-bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
+unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
     int i, x1, x2, y1, y2;
-    bool bump = false;
+    unsigned int collision = 0;
 
     // Get the limits of the map
     sf::Vector2u mapsize = mapLoader->GetMapSize();
     // Get the width and height of a single tile
-
     sf::Vector2u tilesize = mapLoader->GetMapTileSize();
 
     mapsize.x /= tilesize.x;
@@ -124,67 +95,45 @@ bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obje
     // Test the horizontal movement first
     i = objsize.y > tilesize.y ? tilesize.y : objsize.y;
 
-    sf::Vector2f tempPosition;
-
-    for (;;)
-    {
+    for (;;) {
         x1 = (px + vx) / tilesize.x;
         x2 = (px + vx + objsize.x - 1) / tilesize.x;
 
         y1 = (py) / tilesize.y;
         y2 = (py + i - 1) / tilesize.y;
 
-        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y)
-        {
-            if (vx > 0)
-            {
+        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y) {
+            if (vx > 0) {
                 // Trying to move right
-
-                tempPosition.x = x2*tilesize.x;
-                tempPosition.y = y1*tilesize.y;
-                int upRight   = GetCellFromMap(layer, tempPosition);
-
-                tempPosition.y = y2*tilesize.y;
-                int downRight = GetCellFromMap(layer, tempPosition);
-                if (upRight || downRight)
-                {
+                int upRight   = GetCellFromMap(layer, x2 * tilesize.x, y1 * tilesize.y);
+                int downRight = GetCellFromMap(layer, x2 * tilesize.x, y2 * tilesize.y);
+                if (upRight || downRight) {
                     // Place the player as close to the solid tile as possible
                     px = x2 * tilesize.x;
                     px -= objsize.x;// + 1;
                     vx = 0;
-                    bump = true;
+                    collision |= RIGHT_COLLISION;
                 }
-            }
-
-            else if (vx < 0)
-            {
+            } else if (vx < 0) {
                 // Trying to move left
-
-                tempPosition.x = x1*tilesize.x;
-                tempPosition.y = y1*tilesize.y;
-                int upLeft   = GetCellFromMap(layer, tempPosition);
-
-                tempPosition.y = y2*tilesize.y;
-                int downLeft = GetCellFromMap(layer, tempPosition);
-                if (upLeft || downLeft)
-                {
+                int upLeft   = GetCellFromMap(layer, x1 * tilesize.x, y1 * tilesize.y);
+                int downLeft = GetCellFromMap(layer, x1 * tilesize.x, y2 * tilesize.y);
+                if (upLeft || downLeft) {
                     // Place the player as close to the solid tile as possible
                     px = (x1+1) * tilesize.x;
                     vx = 0;
-                    bump = true;
+                    collision |= LEFT_COLLISION;
                 }
             }
         }
 
-        if (i == objsize.y) // Checked player height with all tiles ?
-        {
+        if (i == objsize.y) {
             break;
         }
 
         i += tilesize.y; // done, check next tile upwards
 
-        if (i > objsize.y)
-        {
+        if (i > objsize.y) {
             i = objsize.y;
         }
     }
@@ -192,104 +141,151 @@ bool mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* obje
     // Now test the vertical movement
     i = objsize.x > tilesize.x ? tilesize.x : objsize.x;
 
-    for (;;)
-    {
+    for (;;) {
         x1 = (px / tilesize.x);
         x2 = ((px + i-1) / tilesize.x);
 
         y1 = ((py + vy) / tilesize.y);
         y2 = ((py + vy + objsize.y-1) / tilesize.y);
 
-        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y)
-        {
-            if (vy > 0)
-            {
+        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y) {
+            if (vy > 0) {
                 // Trying to move down
-
-                tempPosition.y = y2*tilesize.y;
-                tempPosition.x = x1*tilesize.x;
-                int downLeft  = GetCellFromMap(layer, tempPosition);
-
-                tempPosition.x = x2*tilesize.x;
-                int downRight = GetCellFromMap(layer, tempPosition);
-                if (downLeft || downRight)
-                {
+                int downLeft  = GetCellFromMap(layer, x1 * tilesize.x, y2 * tilesize.y);
+                int downRight = GetCellFromMap(layer, x2 * tilesize.x, y2 * tilesize.y);
+                if (downLeft || downRight) {
                     // Place the player as close to the solid tile as possible
                     py = y2 * tilesize.y;
                     py -= objsize.y;
                     vy = 0;
-                    bump = true;
+                    collision |= DOWN_COLLISION;
                 }
-            }
-
-            else if (vy < 0)
-            {
+            } else if (vy < 0) {
                 // Trying to move up
-
-                tempPosition.y = y1*tilesize.y;
-                tempPosition.x = x1*tilesize.x;
-                int upLeft  = GetCellFromMap(layer, tempPosition);
-
-                tempPosition.x = x2*tilesize.x;
-                int upRight = GetCellFromMap(layer, tempPosition);
-                if (upLeft || upRight)
-                {
+                int upLeft  = GetCellFromMap(layer, x1 * tilesize.x, y1 * tilesize.y);
+                int upRight = GetCellFromMap(layer, x2 * tilesize.x, y1 * tilesize.y);
+                if (upLeft || upRight) {
                     // Place the player as close to the solid tile as possible
                     py = (y1 + 1) * tilesize.y;
                     vy = 0;
-                    bump = true;
+                    collision |= UP_COLLISION;
                 }
             }
         }
 
-        if (i == objsize.x)
-        {
+        if (i == objsize.x) {
             break;
         }
 
         i += tilesize.x; // done, check next tile to the right
 
-        if (i > objsize.x)
-        {
+        if (i > objsize.x) {
             i = objsize.x;
         }
     }
 
+    // Now apply the movement
+    object->setPosition(px + vx, py + vy);
+    px = object->getPosition().x;
+    py = object->getPosition().y;
+
     // Check collision with edges of map
     if (px < 0) {
-        px = 0;
-        bump = true;
+        collision |= LEFT_COLLISION;
+        object->setPosition(px, py);
     } else if (px + objsize.x >= mapsize.x * tilesize.x) {
-        px = mapsize.x*tilesize.x - objsize.x - 1;
-        bump = true;
+        collision |= RIGHT_COLLISION;
+        object->setPosition(mapsize.x * tilesize.x - objsize.x - 1, py);
     }
 
     if(py < 0) {
-        py = 0;
-        bump = true;
+        collision |= UP_COLLISION;
+        object->setPosition(px, 0);
     } else if(py + objsize.y >= mapsize.y * tilesize.y) {
-        py = mapsize.y*tilesize.y - objsize.y - 1;
-        bump = true;
+        collision |= DOWN_COLLISION;
+        object->setPosition(px, mapsize.y * tilesize.y - objsize.y - 1);
     }
-
-    if(bump) {
-        // Now apply the movement and animation
-        object->setPosition(px,py);
-    }
-
-    return bump;
+    std::cout << "Collision = " << collision << std::endl;
+    return collision;
 }
-*/
 
-sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, sf::Vector2f position) {
+unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
+    unsigned int collision = 0;
+
+    // Get the limits of the map
+    sf::Vector2u mapsize = mapLoader->GetMapSize();
+
+    // Get the width and height of a single tile
+    sf::Vector2u tilesize = mapLoader->GetMapTileSize();
+
+    mapsize.x /= tilesize.x;
+    mapsize.y /= tilesize.y;
+    mapsize.x--;
+    mapsize.y--;
+
+    // Get the height and width of the object (in this case, 100% of a tile)
+    sf::Vector2u objsize = object->getSize();
+    objsize.x *= object->getScale().x;
+    objsize.y *= object->getScale().y;
+
+    float px = object->getPosition().x;
+    float py = object->getPosition().y;
+
+    int minTileX = px / tilesize.x;
+    int minTileY = py / tilesize.y;
+    int maxTileX = (px + objsize.x) / tilesize.x;
+    int maxTileY = (py + objsize.y) / tilesize.y;
+
+    // Check horizontal collision
+    for (int y = minTileY; y < maxTileY; ++y) {
+        if (GetCellFromMap(layer, (float) minTileX * tilesize.x, (float) y * tilesize.y)) {
+            px = (minTileX + 1) * tilesize.x + 1;
+            collision |= LEFT_COLLISION;
+            break;
+        } else if (GetCellFromMap(layer, (float) maxTileX * tilesize.x, (float) y * tilesize.y)) {
+            px = maxTileX * tilesize.x - objsize.x - 1;
+            std::cout << "right" << std::endl;
+            collision |= RIGHT_COLLISION;
+            break;
+        }
+    }
+
+    // Check vertical collision
+    for (int x = minTileX; x < maxTileX; ++x) {
+        if (GetCellFromMap(layer, x * tilesize.x, minTileY * tilesize.y)) {
+            py = (minTileY + 1) * tilesize.y + 1;
+            std::cout << "up" << std::endl;
+            collision |= UP_COLLISION;
+            break;
+        } else if (GetCellFromMap(layer, x * tilesize.x, maxTileY * tilesize.y)) {
+            py = maxTileY * tilesize.y - objsize.y - 1;
+            std::cout << "down" << std::endl;
+            collision |= DOWN_COLLISION;
+            break;
+        }
+    }
+
+    if (collision) {
+        object->setPosition(px, py);
+    }
+
+    return collision;
+}
+
+sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, float px, float py) {
     auto& layers = mapLoader->GetLayers();
+
+    if (layerIndex < 0 || layerIndex >= layers.size()) {
+        return 0;
+    }
+
     tmx::MapLayer& layer = layers[layerIndex];
     sf::Vector2u mapsize = mapLoader->GetMapSize();
     sf::Vector2u tilesize = mapLoader->GetMapTileSize();
     mapsize.x /= tilesize.x;
     mapsize.y /= tilesize.y;
-    int col = floor(position.x / tilesize.x);
-    int row = floor(position.y / tilesize.y);
+    int col = floor(px / tilesize.x);
+    int row = floor(py / tilesize.y);
     int target = row*mapsize.x + col;
 
     if(target < 0 || target >= layer.tiles.size()) {

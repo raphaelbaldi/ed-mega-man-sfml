@@ -84,7 +84,7 @@ void PlayState::handleEvents(cgf::Game* game) {
 void PlayState::update(cgf::Game* game) {
     for (int i = 0; i < entities->size(); i++) {
         if (nullptr != (*entities)[i]) {
-            (*entities)[i]->Update(game);
+            (*entities)[i]->Update(game, true);
         }
     }
 }

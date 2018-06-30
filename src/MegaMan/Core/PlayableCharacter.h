@@ -22,9 +22,8 @@ namespace mm
             bool jumpPressed;
             mm::Stage* stage;
             void Animate();
-            void Update(cgf::Game* game);
+            void Update(cgf::Game* game, bool updatePosition);
             void Shoot();
-            bool IsGrounded();
             sf::RectangleShape* rectangle;
 
         private:

@@ -16,14 +16,20 @@ namespace mm
     class Stage
     {
         public:
+            static const unsigned int LEFT_COLLISION = 1;
+            static const unsigned int RIGHT_COLLISION = 2;
+            static const unsigned int UP_COLLISION = 4;
+            static const unsigned int DOWN_COLLISION = 8;
+
             // Gets an ordered list of areas to explore
             Stage(std::string basePath, std::vector<mm::StageArea*>* areas, const sf::Color* stageColor);
             virtual ~Stage();
             virtual void SetArea(int newArea);
             virtual void Render(sf::RenderWindow* screen);
             void CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position);
-            sf::Uint16 GetCellFromMap(uint8_t layer, sf::Vector2f position);
-            bool CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object);
+            sf::Uint16 GetCellFromMap(uint8_t layer, float px, float py);
+            unsigned int CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object);
+            unsigned int CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object);
             sf::Vector2f GetRoundPosition(sf::Vector2f position);
 
         protected:

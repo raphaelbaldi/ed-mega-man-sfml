@@ -13,7 +13,7 @@ namespace mm
             Entity();
             virtual ~Entity();
             virtual void Render(sf::RenderWindow* screen);
-            virtual void Update(cgf::Game* game);
+            virtual void Update(cgf::Game* game, bool updatePosition);
             virtual void HandleEvents(cgf::InputManager* inputManager);
             sf::Vector2f GetPosition();
 

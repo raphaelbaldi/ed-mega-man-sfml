@@ -82,7 +82,6 @@ void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager) {
             sprite.setYspeed(moveDirection.y * moveSpeed);
         } else {
             sprite.setXspeed(moveDirection.x * moveSpeed);
-            sprite.setYspeed(0);
         }
     }
 }
@@ -155,7 +154,9 @@ void mm::PlayableCharacter::Animate() {
     SetAnimation(newAnimation);
 }
 
-void mm::PlayableCharacter::Update(cgf::Game* game) {
+void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition) {
+    sprite.setXspeed(moveDirection.x * moveSpeed);
+
     // Update Jump
     if(isJumping) {
         sprite.setYspeed(-jumpSpeed);
@@ -165,62 +166,21 @@ void mm::PlayableCharacter::Update(cgf::Game* game) {
         }
     }
 
-    // Control fall;
-    if(!IsGrounded()) {
-        if(!isJumping && !isClimbingStair) {
-            isFalling = true;
-            sprite.setYspeed(fallSpeed);
-        }
-    } else {
-        isFalling = false;
-    }
-
-    Entity::Update(game);
-
     if(nullptr != stage) {
-        sf::Vector2f* charPosition = nullptr;
-        if (moveDirection.x > 0) {
-            charPosition = new sf::Vector2f(sprite.getPosition().x + sprite.getSize().x, sprite.getPosition().y + sprite.getSize().y * 0.9f);
-            sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
+        unsigned int collisionResult = stage->CheckCollision(COLLISION_LAYER, game, &sprite);
 
-            if (mapCell != 0) {
-                sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
-                sprite.setPosition(newPosition.x - sprite.getSize().x * 0.5f, sprite.getPosition().y);
-                sprite.setXspeed(0);
-            }
-        } else if (moveDirection.x < 0) {
-            charPosition = new sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y + sprite.getSize().y * 0.9f);
-            sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
-            if (mapCell != 0) {
-                sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
-                sprite.setPosition(newPosition.x + sprite.getSize().x * 0.5f, sprite.getPosition().y);
-                sprite.setXspeed(0);
+        // Control fall;
+        if ((collisionResult & Stage::DOWN_COLLISION) != 0) {
+            isFalling = false;
+        } else {
+            if(!isJumping && !isClimbingStair) {
+                isFalling = true;
+                sprite.setYspeed(fallSpeed);
             }
         }
-
-        if(nullptr != charPosition) {
-            delete(charPosition);
-        }
-    }
-}
-
-bool mm::PlayableCharacter::IsGrounded() {
-    if(nullptr == stage) {
-        return false;
     }
 
-    // Check position just below the character (mid bottom)
-    sf::Vector2f* charPosition = new sf::Vector2f(sprite.getPosition().x + sprite.getSize().x * 0.5f, position.y + sprite.getSize().y);
-    sf::Uint16 mapCell = stage->GetCellFromMap(COLLISION_LAYER, *charPosition);
-
-    if (mapCell != 0 && isFalling) {
-        sf::Vector2f newPosition = stage->GetRoundPosition(*charPosition);
-        sprite.setPosition(sprite.getPosition().x, newPosition.y - sprite.getSize().y);
-    }
-
-    delete(charPosition);
-
-    return mapCell != 0;
+    Entity::Update(game, false);
 }
 
 void mm::PlayableCharacter::Shoot() {

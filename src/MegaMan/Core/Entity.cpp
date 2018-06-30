@@ -29,10 +29,10 @@ mm::Entity::Entity() {
 mm::Entity::~Entity() {
 }
 
-void mm::Entity::Update(cgf::Game* game) {
-    sprite.update(game->getUpdateInterval());
+void mm::Entity::Update(cgf::Game* game, bool updatePosition) {
+    sprite.update(game->getUpdateInterval(), updatePosition);
     position.x = sprite.getPosition().x + sprite.getSize().x * 0.5;
-    position.y = sprite.getPosition().y + sprite.getSize().x * 0.1;
+    position.y = sprite.getPosition().y + sprite.getSize().y;
 }
 
 void mm::Entity::Render(sf::RenderWindow* screen) {
