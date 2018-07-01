@@ -1,10 +1,12 @@
 #include "SniperJoe.h"
 
 mm::SniperJoe::SniperJoe(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage) {
+    : Enemy(player, stage)
+{
     //ctor
 }
 
-mm::SniperJoe::~SniperJoe() {
+mm::SniperJoe::~SniperJoe()
+{
     //dtor
 }

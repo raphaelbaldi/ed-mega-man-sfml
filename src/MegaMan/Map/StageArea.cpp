@@ -1,10 +1,12 @@
 #include "StageArea.h"
 
-mm::StageArea::StageArea(std::string areaName) {
+mm::StageArea::StageArea(std::string areaName)
+{
     this->areaName = areaName;
 }
 
-mm::StageArea::~StageArea() {
+mm::StageArea::~StageArea()
+{
 }
 
 void mm::StageArea::LoadArea(tmx::MapLoader* mapLoader)
@@ -14,8 +16,10 @@ void mm::StageArea::LoadArea(tmx::MapLoader* mapLoader)
     mapLoader->Load(ss.str());
 }
 
-void mm::StageArea::UnloadArea(tmx::MapLoader* mapLoader) {
+void mm::StageArea::UnloadArea(tmx::MapLoader* mapLoader)
+{
 }
 
-void mm::StageArea::Render(sf::RenderWindow* screen) {
+void mm::StageArea::Render(sf::RenderWindow* screen)
+{
 }

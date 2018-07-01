@@ -6,21 +6,19 @@
 
 #include <tmx/MapLoader.h>
 
-namespace mm
-{
-    class StageArea
-    {
-        public:
-            StageArea(std::string areaName);
-            virtual ~StageArea();
-            virtual void LoadArea(tmx::MapLoader* mapLoader);
-            virtual void UnloadArea(tmx::MapLoader* mapLoader);
-            virtual void Render(sf::RenderWindow* screen);
+namespace mm {
+class StageArea {
+    public:
+        StageArea(std::string areaName);
+        virtual ~StageArea();
+        virtual void LoadArea(tmx::MapLoader* mapLoader);
+        virtual void UnloadArea(tmx::MapLoader* mapLoader);
+        virtual void Render(sf::RenderWindow* screen);
 
-        protected:
-            std::string areaName;
+    protected:
+        std::string areaName;
 
-        private:
-    };
+    private:
+};
 }
 #endif // STAGEAREA_H

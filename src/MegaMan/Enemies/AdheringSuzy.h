@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class AdheringSuzy : public Enemy {
-        public:
-            AdheringSuzy(PlayableCharacter* player, Stage* stage);
-            virtual ~AdheringSuzy();
+class AdheringSuzy : public Enemy {
+    public:
+        AdheringSuzy(PlayableCharacter* player, Stage* stage);
+        virtual ~AdheringSuzy();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // ADHERINGSUZY_H

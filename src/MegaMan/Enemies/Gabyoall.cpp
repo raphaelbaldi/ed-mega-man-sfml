@@ -1,10 +1,12 @@
 #include "Gabyoall.h"
 
 mm::Gabyoall::Gabyoall(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage) {
+    : Enemy(player, stage)
+{
     //ctor
 }
 
-mm::Gabyoall::~Gabyoall() {
+mm::Gabyoall::~Gabyoall()
+{
     //dtor
 }

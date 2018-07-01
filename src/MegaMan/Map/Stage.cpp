@@ -1,6 +1,7 @@
 #include "Stage.h"
 
-mm::Stage::Stage(std::string basePath, std::vector<mm::StageArea*>* areas, const sf::Color* stageColor) {
+mm::Stage::Stage(std::string basePath, std::vector<mm::StageArea*>* areas, const sf::Color* stageColor)
+{
     this->areas = areas;
     this->basePath = basePath;
     this->stageColor = stageColor;
@@ -9,7 +10,8 @@ mm::Stage::Stage(std::string basePath, std::vector<mm::StageArea*>* areas, const
     this->SetArea(0);
 }
 
-void mm::Stage::SetArea(int newArea) {
+void mm::Stage::SetArea(int newArea)
+{
     if (newArea < 0 || newArea >= this->areas->size()) {
         return;
     }
@@ -22,10 +24,12 @@ void mm::Stage::SetArea(int newArea) {
     (*this->areas)[this->currentArea]->LoadArea(this->mapLoader);
 }
 
-mm::Stage::~Stage() {
+mm::Stage::~Stage()
+{
 }
 
-void mm::Stage::Render(sf::RenderWindow* screen) {
+void mm::Stage::Render(sf::RenderWindow* screen)
+{
     screen->clear(*this->stageColor);
 
     if (this->currentArea >= 0 && this->currentArea < this->areas->size()) {
@@ -33,7 +37,8 @@ void mm::Stage::Render(sf::RenderWindow* screen) {
     }
 }
 
-void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position) {
+void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position)
+{
     sf::View view = screen->getView();
     sf::Vector2u mapsize = this->mapLoader->GetMapSize();
     sf::Vector2f viewsize = view.getSize();
@@ -63,7 +68,8 @@ void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position
     screen->setView(view);
 }
 
-unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object, bool ignoreVerticalMapBounds, bool ignoreHorizontalMapBounds) {
+unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object, bool ignoreVerticalMapBounds, bool ignoreHorizontalMapBounds)
+{
     int i, x1, x2, y1, y2;
     unsigned int collision = 0;
 
@@ -217,7 +223,8 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
     return collision;
 }
 
-unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
+unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object)
+{
     unsigned int collision = 0;
 
     // Get the limits of the map
@@ -277,7 +284,8 @@ unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf
     return collision;
 }
 
-sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, float px, float py) {
+sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, float px, float py)
+{
     auto& layers = mapLoader->GetLayers();
 
     if (layerIndex < 0 || layerIndex >= layers.size()) {
@@ -300,7 +308,8 @@ sf::Uint16 mm::Stage::GetCellFromMap(uint8_t layerIndex, float px, float py) {
     return layer.tiles[target].gid;
 }
 
-sf::Vector2f mm::Stage::GetRoundPosition(sf::Vector2f position) {
+sf::Vector2f mm::Stage::GetRoundPosition(sf::Vector2f position)
+{
     sf::Vector2u tilesize = mapLoader->GetMapTileSize();
     float x = floor(position.x / tilesize.x) * tilesize.x;
     float y = floor(position.y / tilesize.y) * tilesize.y;

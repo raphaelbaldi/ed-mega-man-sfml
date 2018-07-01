@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class ScrewDriver : public Enemy {
-        public:
-            ScrewDriver(PlayableCharacter* player, Stage* stage);
-            virtual ~ScrewDriver();
+class ScrewDriver : public Enemy {
+    public:
+        ScrewDriver(PlayableCharacter* player, Stage* stage);
+        virtual ~ScrewDriver();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // SCREWDRIVER_H

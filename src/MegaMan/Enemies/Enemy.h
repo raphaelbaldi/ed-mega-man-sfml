@@ -5,17 +5,17 @@
 #include "PlayableCharacter.h"
 
 namespace mm {
-    class Enemy : public Entity {
-        public:
-            Enemy(PlayableCharacter* player, Stage* stage);
-            virtual ~Enemy();
+class Enemy : public Entity {
+    public:
+        Enemy(PlayableCharacter* player, Stage* stage);
+        virtual ~Enemy();
 
-        protected:
-            PlayableCharacter* player;
-            Stage* stage;
+    protected:
+        PlayableCharacter* player;
+        Stage* stage;
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // ENEMY_H

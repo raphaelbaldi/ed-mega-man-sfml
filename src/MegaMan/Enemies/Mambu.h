@@ -5,14 +5,14 @@
 
 namespace mm {
 class Mambu : public Enemy {
-        public:
-            Mambu(PlayableCharacter* player, Stage* stage);
-            virtual ~Mambu();
+    public:
+        Mambu(PlayableCharacter* player, Stage* stage);
+        virtual ~Mambu();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // MAMBU_H

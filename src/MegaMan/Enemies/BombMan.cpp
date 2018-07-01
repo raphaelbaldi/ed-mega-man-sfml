@@ -1,10 +1,12 @@
 #include "BombMan.h"
 
 mm::BombMan::BombMan(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage) {
+    : Enemy(player, stage)
+{
     //ctor
 }
 
-mm::BombMan::~BombMan() {
+mm::BombMan::~BombMan()
+{
     //dtor
 }

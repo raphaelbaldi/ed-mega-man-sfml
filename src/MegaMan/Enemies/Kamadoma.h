@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class Kamadoma : public Enemy {
-        public:
-            Kamadoma(PlayableCharacter* player, Stage* stage);
-            virtual ~Kamadoma();
+class Kamadoma : public Enemy {
+    public:
+        Kamadoma(PlayableCharacter* player, Stage* stage);
+        virtual ~Kamadoma();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // KAMADOMA_H

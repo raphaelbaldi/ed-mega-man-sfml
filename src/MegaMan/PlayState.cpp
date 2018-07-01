@@ -4,7 +4,8 @@
 
 PlayState PlayState::m_PlayState;
 
-void PlayState::init() {
+void PlayState::init()
+{
     // TODO: create a configuration file per stage to make initialization easier
     mm::StageArea* bombman01 = new mm::StageArea("bombman_01");
     mm::StageArea* bombman02 = new mm::StageArea("bombman_02");
@@ -46,7 +47,8 @@ void PlayState::init() {
     inputManager->addKeyInput("quit", sf::Keyboard::Escape);
 }
 
-void PlayState::cleanup() {
+void PlayState::cleanup()
+{
     delete currentStage;
     for(int i = 0; i < entities->size(); i++) {
         delete (*entities)[i];
@@ -54,13 +56,16 @@ void PlayState::cleanup() {
     delete entities;
 }
 
-void PlayState::pause() {
+void PlayState::pause()
+{
 }
 
-void PlayState::resume() {
+void PlayState::resume()
+{
 }
 
-void PlayState::handleEvents(cgf::Game* game) {
+void PlayState::handleEvents(cgf::Game* game)
+{
     sf::View view = game->getScreen()->getView(); // gets the view
     sf::Event event;
 
@@ -81,7 +86,8 @@ void PlayState::handleEvents(cgf::Game* game) {
     }
 }
 
-void PlayState::update(cgf::Game* game) {
+void PlayState::update(cgf::Game* game)
+{
     for (int i = 0; i < entities->size(); i++) {
         if (nullptr != (*entities)[i]) {
             (*entities)[i]->Update(game, true);
@@ -89,7 +95,8 @@ void PlayState::update(cgf::Game* game) {
     }
 }
 
-void PlayState::draw(cgf::Game* game) {
+void PlayState::draw(cgf::Game* game)
+{
     currentStage->CenterOnPosition(game->getScreen(), mainCharacter->GetPosition());
     currentStage->Render(game->getScreen());
     for (int i = 0; i < entities->size(); i++) {

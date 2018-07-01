@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class Gabyoall : public Enemy {
-        public:
-            Gabyoall(PlayableCharacter* player, Stage* stage);
-            virtual ~Gabyoall();
+class Gabyoall : public Enemy {
+    public:
+        Gabyoall(PlayableCharacter* player, Stage* stage);
+        virtual ~Gabyoall();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // GABYOALL_H

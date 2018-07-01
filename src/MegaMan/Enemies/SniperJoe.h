@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class SniperJoe : public Enemy {
-        public:
-            SniperJoe(PlayableCharacter* player, Stage* stage);
-            virtual ~SniperJoe();
+class SniperJoe : public Enemy {
+    public:
+        SniperJoe(PlayableCharacter* player, Stage* stage);
+        virtual ~SniperJoe();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // SNIPERJOE_H

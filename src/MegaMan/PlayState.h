@@ -12,8 +12,7 @@
 #include "Core/Entity.h"
 #include "Core/PlayableCharacter.h"
 
-class PlayState : public cgf::GameState
-{
+class PlayState : public cgf::GameState {
     public:
         void init();
         void cleanup();
@@ -24,7 +23,8 @@ class PlayState : public cgf::GameState
         void draw(cgf::Game* game);
 
         // Implement Singleton Pattern
-        static PlayState* instance() {
+        static PlayState* instance()
+        {
             return &m_PlayState;
         }
 

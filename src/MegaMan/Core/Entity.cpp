@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-mm::Entity::Entity() {
+mm::Entity::Entity()
+{
     speed.x = 0;
     speed.y = 0;
     moveSpeed = 15;
@@ -26,28 +27,34 @@ mm::Entity::Entity() {
     totalLife = 100;
 }
 
-mm::Entity::~Entity() {
+mm::Entity::~Entity()
+{
 }
 
-void mm::Entity::Update(cgf::Game* game, bool updatePosition) {
+void mm::Entity::Update(cgf::Game* game, bool updatePosition)
+{
     sprite.update(game->getUpdateInterval(), updatePosition);
     position.x = sprite.getPosition().x + sprite.getSize().x * 0.5;
     position.y = sprite.getPosition().y + sprite.getSize().y;
 }
 
-void mm::Entity::Render(sf::RenderWindow* screen) {
+void mm::Entity::Render(sf::RenderWindow* screen)
+{
     Animate();
     screen->draw(sprite);
 }
 
-sf::Vector2f mm::Entity::GetPosition() {
+sf::Vector2f mm::Entity::GetPosition()
+{
     return position;
 }
 
-void mm::Entity::HandleEvents(cgf::InputManager* inputManager) {
+void mm::Entity::HandleEvents(cgf::InputManager* inputManager)
+{
 }
 
-void mm::Entity::SetAnimation(std::string newAnimation) {
+void mm::Entity::SetAnimation(std::string newAnimation)
+{
     if(newAnimation.compare(currentAnimation) == 0) {
         return;
     }
@@ -58,12 +65,15 @@ void mm::Entity::SetAnimation(std::string newAnimation) {
     currentAnimation = newAnimation;
 }
 
-void mm::Entity::Animate() {
+void mm::Entity::Animate()
+{
 }
 
-void mm::Entity::Shoot() {
+void mm::Entity::Shoot()
+{
 }
 
-bool mm::Entity::CanShoot() {
+bool mm::Entity::CanShoot()
+{
     return shootCooldown <= 0;
 }

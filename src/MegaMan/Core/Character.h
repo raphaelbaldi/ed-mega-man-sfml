@@ -3,18 +3,16 @@
 
 #include "Entity.h"
 
-namespace mm
-{
-    class Character : public Entity
-    {
-        public:
-            Character();
-            virtual ~Character();
+namespace mm {
+class Character : public Entity {
+    public:
+        Character();
+        virtual ~Character();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // CHARACTER_H

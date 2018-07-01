@@ -4,15 +4,15 @@
 #include <Enemy.h>
 
 namespace mm {
-    class KillerBomb : public Enemy {
-        public:
-            KillerBomb(PlayableCharacter* player, Stage* stage);
-            virtual ~KillerBomb();
+class KillerBomb : public Enemy {
+    public:
+        KillerBomb(PlayableCharacter* player, Stage* stage);
+        virtual ~KillerBomb();
 
-        protected:
+    protected:
 
-        private:
-    };
+    private:
+};
 }
 
 #endif // KILLERBOMB_H

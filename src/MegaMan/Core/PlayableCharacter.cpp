@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-mm::PlayableCharacter::PlayableCharacter() {
+mm::PlayableCharacter::PlayableCharacter()
+{
     // TODO: make it configurable
     sprite.load("content/characters/megaman/megaman.png", 32, 32, 0, 0, 0, 0, 5, 4);
 
@@ -26,20 +27,24 @@ mm::PlayableCharacter::PlayableCharacter() {
     rectangle->setFillColor(sf::Color(255, 0, 0));
 }
 
-void mm::PlayableCharacter::Render(sf::RenderWindow* window) {
+void mm::PlayableCharacter::Render(sf::RenderWindow* window)
+{
     mm::Entity::Render(window);
     rectangle->setPosition(sprite.getPosition());
     //window->draw(*rectangle);
 }
 
-mm::PlayableCharacter::~PlayableCharacter() {
+mm::PlayableCharacter::~PlayableCharacter()
+{
 }
 
-void mm::PlayableCharacter::SetStage(mm::Stage* _stage) {
+void mm::PlayableCharacter::SetStage(mm::Stage* _stage)
+{
     stage = _stage;
 }
 
-void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager) {
+void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager)
+{
     moveDirection.x = 0;
     moveDirection.y = 0;
     if(inputManager->testEvent("left")) {
@@ -87,7 +92,8 @@ void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager) {
     }
 }
 
-void mm::PlayableCharacter::Animate() {
+void mm::PlayableCharacter::Animate()
+{
     bool wasFacingLeft = isFacingLeft;
     if(moveDirection.x > 0) {
         isFacingLeft = false;
@@ -155,7 +161,8 @@ void mm::PlayableCharacter::Animate() {
     SetAnimation(newAnimation);
 }
 
-void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition) {
+void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition)
+{
     sprite.setXspeed(moveDirection.x * moveSpeed);
 
     // Update Jump
@@ -184,5 +191,6 @@ void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition) {
     Entity::Update(game, false);
 }
 
-void mm::PlayableCharacter::Shoot() {
+void mm::PlayableCharacter::Shoot()
+{
 }
