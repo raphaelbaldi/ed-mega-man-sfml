@@ -190,6 +190,7 @@ void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition)
     }
 
     Entity::Update(game, false);
+    std::cout<< "(" << sprite.getPosition().x << ", " << sprite.getPosition().y << ")" <<  std::endl;
 }
 
 void mm::PlayableCharacter::Shoot()

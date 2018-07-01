@@ -40,10 +40,10 @@ void PlayState::init()
     currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
     entities = new std::vector<mm::Entity*>();
-    mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 130));
+    mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 160));
     mainCharacter->SetStage(currentStage);
 
-    mm::Bombombomb* enemy = new mm::Bombombomb(mainCharacter, currentStage, sf::Vector2f(10, 250));
+    mm::Gabyoall* enemy = new mm::Gabyoall(mainCharacter, currentStage, sf::Vector2f(400, 88));
     entities->push_back(enemy);
 
     // Push the main character last so it is always rendered on top of everything

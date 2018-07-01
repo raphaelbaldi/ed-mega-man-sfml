@@ -43,7 +43,7 @@ void mm::Entity::Update(cgf::Game* game, bool updatePosition)
 {
     sprite.update(game->getUpdateInterval(), updatePosition);
     position.x = sprite.getPosition().x + sprite.getSize().x * 0.5;
-    position.y = sprite.getPosition().y + sprite.getSize().y;
+    position.y = sprite.getPosition().y + sprite.getSize().y * 0.5;
 }
 
 void mm::Entity::Render(sf::RenderWindow* screen)
