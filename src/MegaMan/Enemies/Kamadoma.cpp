@@ -33,6 +33,7 @@ void mm::Kamadoma::Update(cgf::Game* game, bool updatePosition)
 void mm::Kamadoma::Idle(cgf::Game* game)
 {
     idleTimer -= game->getUpdateInterval() / 1000;
+    sprite.setCurrentFrame(0);
     if (idleTimer <= 0) {
         // Last collision defines our next move.
         idleTimer = IDLE_TIME;
@@ -50,8 +51,10 @@ void mm::Kamadoma::Jumping(cgf::Game* game)
     unsigned int collision = stage->CheckCollision(COLLISION_LAYER, game, &sprite, true, true);
     if ((collision & Stage::DOWN_COLLISION) != 0 || (collision & Stage::DOWN_MAP_BOUND_COLLISION) != 0) {
         currentState = STATE_IDLE;
+        sprite.setCurrentFrame(0);
+    } else {
+        sprite.setCurrentFrame(1);
     }
-
 }
 
 void mm::Kamadoma::ComputeJump(cgf::Game* game)
