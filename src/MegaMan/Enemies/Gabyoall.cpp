@@ -7,6 +7,11 @@ mm::Gabyoall::Gabyoall(PlayableCharacter* player, Stage* stage, sf::Vector2f sta
     currentState = STATE_MOVE_LEFT;
 
     moveSpeed = SPEED_FAR_FROM_PLAYER;
+
+    sprite.setLooped(true);
+    sprite.setFrameRange(0, 1);
+    sprite.setAnimRate(ANIM_RATE_FAR_FROM_PLAYER);
+    sprite.play();
 }
 
 mm::Gabyoall::~Gabyoall()
@@ -21,8 +26,10 @@ void mm::Gabyoall::Update(cgf::Game* game, bool updatePosition)
     float sqr_dist = dx * dx + dy * dy;
     if (sqr_dist < SQR_DISTANCE_FROM_PLAYER) {
         moveSpeed = SPEED_CLOSE_FROM_PLAYER;
+        sprite.setAnimRate(ANIM_RATE_CLOSE_FROM_PLAYER);
     } else {
         moveSpeed = SPEED_FAR_FROM_PLAYER;
+        sprite.setAnimRate(ANIM_RATE_FAR_FROM_PLAYER);
     }
 
     if (STATE_MOVE_LEFT == currentState) {
