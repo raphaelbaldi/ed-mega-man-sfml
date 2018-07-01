@@ -13,4 +13,20 @@ mm::Bombombomb::~Bombombomb()
 
 void mm::Bombombomb::Update(cgf::Game* game, bool updatePosition)
 {
+    switch(currentState) {
+    case STATE_GOING_UP:
+        UpdatePosition(game);
+        break;
+    case EXPLODED:
+        UpdateShoots(game);
+        break;
+    }
+}
+
+void mm::Bombombomb::UpdatePosition(cgf::Game* game)
+{
+}
+
+void mm::Bombombomb::UpdateShoots(cgf::Game* game)
+{
 }

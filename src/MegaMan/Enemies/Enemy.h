@@ -15,7 +15,8 @@ class Enemy : public Entity {
     protected:
         PlayableCharacter* player;
         Stage* stage;
-        cgf::Game* game;
+
+        unsigned int currentState;
 
     private:
 };

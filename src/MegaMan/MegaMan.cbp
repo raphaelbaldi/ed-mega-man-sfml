@@ -17,6 +17,7 @@
 					<Add directory="Core" />
 					<Add directory="Map" />
 					<Add directory="Enemies/" />
+					<Add directory="Enemies/ShootsUpdateShoots" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics" />
@@ -42,6 +43,7 @@
 					<Add directory="Core" />
 					<Add directory="Map" />
 					<Add directory="Enemies/" />
+					<Add directory="Enemies/ShootsUpdateShoots" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -67,6 +69,7 @@
 					<Add directory="Core" />
 					<Add directory="Map" />
 					<Add directory="Enemies/" />
+					<Add directory="Enemies/ShootsUpdateShoots" />
 				</Compiler>
 				<Linker>
 					<Add library="../../bin/sfml-graphics-2.dll" />
@@ -93,6 +96,7 @@
 					<Add directory="Core" />
 					<Add directory="Map" />
 					<Add directory="Enemies/" />
+					<Add directory="Enemies/ShootsUpdateShoots" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -126,8 +130,6 @@
 		<Unit filename="Core/PlayableCharacter.h" />
 		<Unit filename="Enemies/AdheringSuzy.cpp" />
 		<Unit filename="Enemies/AdheringSuzy.h" />
-		<Unit filename="Enemies/BombMan.cpp" />
-		<Unit filename="Enemies/BombMan.h" />
 		<Unit filename="Enemies/Bombombomb.cpp" />
 		<Unit filename="Enemies/Bombombomb.h" />
 		<Unit filename="Enemies/Enemy.cpp" />
@@ -142,6 +144,8 @@
 		<Unit filename="Enemies/Mambu.h" />
 		<Unit filename="Enemies/ScrewDriver.cpp" />
 		<Unit filename="Enemies/ScrewDriver.h" />
+		<Unit filename="Enemies/ShootsUpdateShoots/BombombombShoot.cpp" />
+		<Unit filename="Enemies/ShootsUpdateShoots/BombombombShoot.h" />
 		<Unit filename="Enemies/SniperJoe.cpp" />
 		<Unit filename="Enemies/SniperJoe.h" />
 		<Unit filename="Map/Stage.cpp" />
