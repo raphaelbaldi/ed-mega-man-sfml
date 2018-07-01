@@ -22,7 +22,7 @@ mm::Entity::Entity() {
     isMoving = false;
     isShooting = false;
     currentAnimation = "";
-    life = 100;
+    currentLife = 100;
     totalLife = 100;
 }
 

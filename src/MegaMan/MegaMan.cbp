@@ -16,6 +16,7 @@
 					<Add option="-g" />
 					<Add directory="Core" />
 					<Add directory="Map" />
+					<Add directory="Enemies/" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics" />
@@ -40,6 +41,7 @@
 					<Add option="-O2" />
 					<Add directory="Core" />
 					<Add directory="Map" />
+					<Add directory="Enemies/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -64,6 +66,7 @@
 					<Add option="-g" />
 					<Add directory="Core" />
 					<Add directory="Map" />
+					<Add directory="Enemies/" />
 				</Compiler>
 				<Linker>
 					<Add library="../../bin/sfml-graphics-2.dll" />
@@ -89,6 +92,7 @@
 					<Add option="-O2" />
 					<Add directory="Core" />
 					<Add directory="Map" />
+					<Add directory="Enemies/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -120,6 +124,26 @@
 		<Unit filename="Core/Entity.h" />
 		<Unit filename="Core/PlayableCharacter.cpp" />
 		<Unit filename="Core/PlayableCharacter.h" />
+		<Unit filename="Enemies/AdheringSuzy.cpp" />
+		<Unit filename="Enemies/AdheringSuzy.h" />
+		<Unit filename="Enemies/BombMan.cpp" />
+		<Unit filename="Enemies/BombMan.h" />
+		<Unit filename="Enemies/Bombombomb.cpp" />
+		<Unit filename="Enemies/Bombombomb.h" />
+		<Unit filename="Enemies/Enemy.cpp" />
+		<Unit filename="Enemies/Enemy.h" />
+		<Unit filename="Enemies/Gabyoall.cpp" />
+		<Unit filename="Enemies/Gabyoall.h" />
+		<Unit filename="Enemies/Kamadoma.cpp" />
+		<Unit filename="Enemies/Kamadoma.h" />
+		<Unit filename="Enemies/KillerBomb.cpp" />
+		<Unit filename="Enemies/KillerBomb.h" />
+		<Unit filename="Enemies/Mambu.cpp" />
+		<Unit filename="Enemies/Mambu.h" />
+		<Unit filename="Enemies/ScrewDriver.cpp" />
+		<Unit filename="Enemies/ScrewDriver.h" />
+		<Unit filename="Enemies/SniperJoe.cpp" />
+		<Unit filename="Enemies/SniperJoe.h" />
 		<Unit filename="Map/Stage.cpp" />
 		<Unit filename="Map/Stage.h" />
 		<Unit filename="Map/StageArea.cpp" />

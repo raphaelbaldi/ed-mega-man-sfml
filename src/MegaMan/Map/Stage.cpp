@@ -63,7 +63,7 @@ void mm::Stage::CenterOnPosition(sf::RenderWindow* screen, sf::Vector2f position
     screen->setView(view);
 }
 
-unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object) {
+unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Sprite* object, bool ignoreVerticalMapBounds, bool ignoreHorizontalMapBounds) {
     int i, x1, x2, y1, y2;
     unsigned int collision = 0;
 
@@ -184,28 +184,36 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
         }
     }
 
+    // Check collision with edges of map
+    if (px < 0) {
+        collision |= LEFT_MAP_BOUND_COLLISION;
+        if (!ignoreHorizontalMapBounds) {
+            px = 0;
+        }
+    } else if (px + objsize.x > (mapsize.x + 1) * tilesize.x) {
+        collision |= RIGHT_MAP_BOUND_COLLISION;
+        if (!ignoreHorizontalMapBounds) {
+            px = ((mapsize.x + 1) * tilesize.x) - objsize.x;
+        }
+    }
+
+    if(py < 0) {
+        collision |= UP_MAP_BOUND_COLLISION;
+        if (!ignoreVerticalMapBounds) {
+            py = 0;
+        }
+    } else if(py + objsize.y > (mapsize.y + 1) * tilesize.y) {
+        collision |= DOWN_MAP_BOUND_COLLISION;
+        if (!ignoreVerticalMapBounds) {
+            py = ((mapsize.y + 1) * tilesize.y) - objsize.y;
+        }
+    }
+
     // Now apply the movement
     object->setPosition(px + vx, py + vy);
     px = object->getPosition().x;
     py = object->getPosition().y;
 
-    // Check collision with edges of map
-    if (px < 0) {
-        collision |= LEFT_COLLISION;
-        object->setPosition(px, py);
-    } else if (px + objsize.x >= mapsize.x * tilesize.x) {
-        collision |= RIGHT_COLLISION;
-        object->setPosition(mapsize.x * tilesize.x - objsize.x - 1, py);
-    }
-
-    if(py < 0) {
-        collision |= UP_COLLISION;
-        object->setPosition(px, 0);
-    } else if(py + objsize.y >= mapsize.y * tilesize.y) {
-        collision |= DOWN_COLLISION;
-        object->setPosition(px, mapsize.y * tilesize.y - objsize.y - 1);
-    }
-    std::cout << "Collision = " << collision << std::endl;
     return collision;
 }
 
@@ -244,7 +252,6 @@ unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf
             break;
         } else if (GetCellFromMap(layer, (float) maxTileX * tilesize.x, (float) y * tilesize.y)) {
             px = maxTileX * tilesize.x - objsize.x - 1;
-            std::cout << "right" << std::endl;
             collision |= RIGHT_COLLISION;
             break;
         }
@@ -254,12 +261,10 @@ unsigned int mm::Stage::CheckSimpleCollision(uint8_t layer, cgf::Game* game, cgf
     for (int x = minTileX; x < maxTileX; ++x) {
         if (GetCellFromMap(layer, x * tilesize.x, minTileY * tilesize.y)) {
             py = (minTileY + 1) * tilesize.y + 1;
-            std::cout << "up" << std::endl;
             collision |= UP_COLLISION;
             break;
         } else if (GetCellFromMap(layer, x * tilesize.x, maxTileY * tilesize.y)) {
             py = maxTileY * tilesize.y - objsize.y - 1;
-            std::cout << "down" << std::endl;
             collision |= DOWN_COLLISION;
             break;
         }

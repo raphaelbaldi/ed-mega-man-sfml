@@ -21,6 +21,7 @@ mm::PlayableCharacter::PlayableCharacter() {
     moveDirection.x = 0;
     moveDirection.y = 0;
 
+    // Position debug
     rectangle = new sf::RectangleShape(sf::Vector2f(sprite.getSize().x, sprite.getSize().y));
     rectangle->setFillColor(sf::Color(255, 0, 0));
 }
@@ -167,7 +168,7 @@ void mm::PlayableCharacter::Update(cgf::Game* game, bool updatePosition) {
     }
 
     if(nullptr != stage) {
-        unsigned int collisionResult = stage->CheckCollision(COLLISION_LAYER, game, &sprite);
+        unsigned int collisionResult = stage->CheckCollision(COLLISION_LAYER, game, &sprite, true, false);
 
         // Control fall;
         if ((collisionResult & Stage::DOWN_COLLISION) != 0) {

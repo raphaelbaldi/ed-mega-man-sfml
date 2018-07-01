@@ -38,7 +38,7 @@ namespace mm
             bool isFacingLeft;
             bool isMoving;
             bool isShooting;
-            int life;
+            int currentLife;
             int totalLife;
 
             virtual void Animate();
