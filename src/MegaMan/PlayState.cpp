@@ -43,8 +43,17 @@ void PlayState::init()
     mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 160));
     mainCharacter->SetStage(currentStage);
 
-    mm::KillerBomb* enemy = new mm::KillerBomb(mainCharacter, currentStage, sf::Vector2f(100, 77));
-    entities->push_back(enemy);
+    mm::AdheringSuzy* adheringSuzy = new mm::AdheringSuzy(mainCharacter, currentStage, sf::Vector2f(479, 152));
+    entities->push_back(adheringSuzy);
+
+    mm::Gabyoall* gabyoall = new mm::Gabyoall(mainCharacter, currentStage, sf::Vector2f(480, 152));
+    entities->push_back(gabyoall);
+
+    mm::Kamadoma* kamadoma = new mm::Kamadoma(mainCharacter, currentStage, sf::Vector2f(480, 152));
+    entities->push_back(kamadoma);
+
+    mm::KillerBomb* killerBomb = new mm::KillerBomb(mainCharacter, currentStage, sf::Vector2f(500, 77));
+    entities->push_back(killerBomb);
 
     // Push the main character last so it is always rendered on top of everything
     entities->push_back(mainCharacter);
