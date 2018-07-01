@@ -8,6 +8,7 @@ class ScrewDriver : public Enemy {
     public:
         ScrewDriver(PlayableCharacter* player, Stage* stage);
         virtual ~ScrewDriver();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

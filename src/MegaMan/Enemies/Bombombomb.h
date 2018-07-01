@@ -8,6 +8,7 @@ class Bombombomb : public Enemy {
     public:
         Bombombomb(PlayableCharacter* player, Stage* stage);
         virtual ~Bombombomb();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

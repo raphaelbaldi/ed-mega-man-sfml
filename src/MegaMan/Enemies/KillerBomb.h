@@ -8,6 +8,7 @@ class KillerBomb : public Enemy {
     public:
         KillerBomb(PlayableCharacter* player, Stage* stage);
         virtual ~KillerBomb();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

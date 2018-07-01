@@ -8,6 +8,7 @@ class SniperJoe : public Enemy {
     public:
         SniperJoe(PlayableCharacter* player, Stage* stage);
         virtual ~SniperJoe();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

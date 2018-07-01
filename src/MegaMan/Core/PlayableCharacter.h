@@ -13,6 +13,7 @@ class PlayableCharacter : public Character {
         void HandleEvents(cgf::InputManager* inputManager);
         void SetStage(mm::Stage* stage);
         void Render(sf::RenderWindow* window);
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
         sf::Vector2f moveDirection;
@@ -20,7 +21,6 @@ class PlayableCharacter : public Character {
         bool jumpPressed;
         mm::Stage* stage;
         void Animate();
-        void Update(cgf::Game* game, bool updatePosition);
         void Shoot();
         sf::RectangleShape* rectangle;
 

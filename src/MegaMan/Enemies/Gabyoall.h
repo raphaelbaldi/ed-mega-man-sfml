@@ -8,6 +8,7 @@ class Gabyoall : public Enemy {
     public:
         Gabyoall(PlayableCharacter* player, Stage* stage);
         virtual ~Gabyoall();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

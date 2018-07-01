@@ -8,6 +8,7 @@ class Mambu : public Enemy {
     public:
         Mambu(PlayableCharacter* player, Stage* stage);
         virtual ~Mambu();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 

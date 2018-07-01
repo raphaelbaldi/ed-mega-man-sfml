@@ -1238,7 +1238,7 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1525221588 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
+1530457851 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
 	<iostream>
 	<cstdlib>
 	<string>
@@ -1246,7 +1246,7 @@
 	"Game.h"
 	"PlayState.h"
 
-1526242946 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
+1530457851 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.h
 	<string>
 	"GameState.h"
 	"Sprite.h"
@@ -1270,10 +1270,19 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1530396124 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
+1530461678 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
 	"Game.h"
 	"PlayState.h"
 	"InputManager.h"
+	"Enemy.h"
+	"AdheringSuzy.h"
+	"Bombombomb.h"
+	"Gabyoall.h"
+	"Kamadoma.h"
+	"KillerBomb.h"
+	"Mambu.h"
+	"ScrewDriver.h"
+	"SniperJoe.h"
 
 1525712390 source:/home/raphaelbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
 	<iostream>
@@ -2514,30 +2523,30 @@
 1528750408 source:c:\users\13180385\downloads\ed-mega-man-sfml\src\megaman\map\stagearea.cpp
 	"StageArea.h"
 
-1526221218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.cpp
+1530457851 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.cpp
 	"Character.h"
 
-1526150314 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.h
+1530457851 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.h
 	"Entity.h"
 
-1530455442 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
+1530459993 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
 	"Game.h"
 	"Sprite.h"
 	"InputManager.h"
 
-1530455447 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
+1530457756 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
 	"Entity.h"
 	<iostream>
 
-1530457079 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
+1530457851 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
 	"PlayableCharacter.h"
 	<iostream>
 
-1530396441 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.h
+1530460455 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.h
 	"Character.h"
 	"Stage.h"
 
-1530457397 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/Stage.h
+1530457851 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/Stage.h
 	<vector>
 	<string>
 	<tmx/MapLoader.h>
@@ -2545,15 +2554,15 @@
 	"Sprite.h"
 	"StageArea.h"
 
-1526150314 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/StageArea.h
+1530457851 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/StageArea.h
 	<string>
 	<sstream>
 	<tmx/MapLoader.h>
 
-1530457023 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/Stage.cpp
+1530462126 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/Stage.cpp
 	"Stage.h"
 
-1526221218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/StageArea.cpp
+1530457851 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Map/StageArea.cpp
 	"StageArea.h"
 
 1530382499 source:/Users/raphaelbaldi/projects/pucrs/ed-mega-man-sfml/src/MegaMan/Core/Character.cpp
@@ -3197,14 +3206,15 @@
 	"PlayState.h"
 	"InputManager.h"
 
-1530456760 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/AdheringSuzy.cpp
+1530462048 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/AdheringSuzy.cpp
 	"AdheringSuzy.h"
 
-1530456616 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/AdheringSuzy.h
+1530461803 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/AdheringSuzy.h
 	<Enemy.h>
 
-1530456662 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Enemy.h
+1530461556 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Enemy.h
 	<Entity.h>
+	"Game.h"
 	"PlayableCharacter.h"
 
 1530456763 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/BombMan.cpp
@@ -3213,52 +3223,77 @@
 1530456617 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/BombMan.h
 	<Enemy.h>
 
-1530456766 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.cpp
 	"Bombombomb.h"
 
-1530456619 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
 	<Enemy.h>
 
-1530456644 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.cpp
+1530461502 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.cpp
 	"Enemy.h"
 
-1530456662 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.h
+1530461556 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.h
 	<Entity.h>
+	"Game.h"
 	"PlayableCharacter.h"
 
-1530456771 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Gabyoall.cpp
+1530461510 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Gabyoall.cpp
 	"Gabyoall.h"
 
-1530456621 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Gabyoall.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Gabyoall.h
 	<Enemy.h>
 
-1530456774 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Kamadoma.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Kamadoma.cpp
 	"Kamadoma.h"
 
-1530456622 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Kamadoma.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Kamadoma.h
 	<Enemy.h>
 
-1530456777 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/KillerBomb.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/KillerBomb.cpp
 	"KillerBomb.h"
 
-1530456623 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/KillerBomb.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/KillerBomb.h
 	<Enemy.h>
 
-1530456781 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.cpp
 	"Mambu.h"
 
-1530456625 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.h
 	<Enemy.h>
 
-1530456784 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
 	"ScrewDriver.h"
 
-1530456626 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
 	<Enemy.h>
 
-1530456787 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.cpp
+1530461579 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.cpp
 	"SniperJoe.h"
 
-1530456629 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.h
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.h
+	<Enemy.h>
+
+1530461803 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//AdheringSuzy.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Bombombomb.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Gabyoall.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Kamadoma.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//KillerBomb.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Mambu.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//ScrewDriver.h
+	<Enemy.h>
+
+1530461579 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//SniperJoe.h
 	<Enemy.h>
 

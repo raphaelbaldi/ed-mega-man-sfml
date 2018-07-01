@@ -1,6 +1,15 @@
 #include "Game.h"
 #include "PlayState.h"
 #include "InputManager.h"
+#include "Enemy.h"
+#include "AdheringSuzy.h"
+#include "Bombombomb.h"
+#include "Gabyoall.h"
+#include "Kamadoma.h"
+#include "KillerBomb.h"
+#include "Mambu.h"
+#include "ScrewDriver.h"
+#include "SniperJoe.h"
 
 PlayState PlayState::m_PlayState;
 
@@ -34,6 +43,9 @@ void PlayState::init()
     mainCharacter = new mm::PlayableCharacter();
     mainCharacter->SetStage(currentStage);
     entities->push_back(mainCharacter);
+
+    mm::AdheringSuzy* enemy = new mm::AdheringSuzy(mainCharacter, currentStage);
+    entities->push_back(enemy);
 
     inputManager = cgf::InputManager::instance();
     inputManager->addKeyInput("left", sf::Keyboard::Left);

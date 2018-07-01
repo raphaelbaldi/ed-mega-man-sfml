@@ -8,6 +8,7 @@ class Kamadoma : public Enemy {
     public:
         Kamadoma(PlayableCharacter* player, Stage* stage);
         virtual ~Kamadoma();
+        void Update(cgf::Game* game, bool updatePosition);
 
     protected:
 
