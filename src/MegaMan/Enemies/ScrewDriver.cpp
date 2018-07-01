@@ -76,21 +76,17 @@ void mm::ScrewDriver::Shooting(cgf::Game* game)
 void mm::ScrewDriver::GenerateShots(cgf::Game* game)
 {
     // Generate 5 shots
-    // TODO: use a for here
     sf::Vector2f spawnPosition;
     spawnPosition.x = sprite.getPosition().x + sprite.getSize().x * 0.38;
     spawnPosition.y = sprite.getPosition().y + 2;
 
-    mm::LinearShoot* shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(-SHOOT_SPEED, 0));
-    shoots->push_back(shot);
-    shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(-SHOOT_SPEED * sin(45 * M_PI/180), -SHOOT_SPEED * sin(45 * M_PI/180)));
-    shoots->push_back(shot);
-    shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(0, -SHOOT_SPEED));
-    shoots->push_back(shot);
-    shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(SHOOT_SPEED * sin(45 * M_PI/180), -SHOOT_SPEED * sin(45 * M_PI/180)));
-    shoots->push_back(shot);
-    shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(SHOOT_SPEED, 0));
-    shoots->push_back(shot);
+    float gradToRad = M_PI / 180;
+    mm::LinearShoot* shot;
+    for (int i = 0; i < 5; ++i) {
+        float angle = 45 * i;
+        shot = new mm::LinearShoot(spawnPosition, sf::Vector2f(SHOOT_SPEED * cos(angle * gradToRad), -SHOOT_SPEED * sin(angle * gradToRad)));
+        shoots->push_back(shot);
+    }
 }
 
 void mm::ScrewDriver::ControlShots(cgf::Game* game)
