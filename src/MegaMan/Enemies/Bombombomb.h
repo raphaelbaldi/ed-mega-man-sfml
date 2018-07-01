@@ -15,7 +15,7 @@ class Bombombomb : public Enemy {
         const static unsigned int STATE_GOING_UP = 1;
         const static unsigned int STATE_EXPLODED = 2;
 
-        const float MAX_DELTA_HEIGTH = 120; // Delta height, from start to explosion point
+        const float MAX_DELTA_HEIGHT = 180;
 
         void UpdatePosition(cgf::Game* game);
         void UpdateShoots(cgf::Game* game);

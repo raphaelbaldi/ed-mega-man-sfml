@@ -144,8 +144,8 @@
 		<Unit filename="Enemies/Mambu.h" />
 		<Unit filename="Enemies/ScrewDriver.cpp" />
 		<Unit filename="Enemies/ScrewDriver.h" />
-		<Unit filename="Enemies/ShootsUpdateShoots/BombombombShoot.cpp" />
-		<Unit filename="Enemies/ShootsUpdateShoots/BombombombShoot.h" />
+		<Unit filename="Enemies/Shoots/BombombombShoot.cpp" />
+		<Unit filename="Enemies/Shoots/BombombombShoot.h" />
 		<Unit filename="Enemies/SniperJoe.cpp" />
 		<Unit filename="Enemies/SniperJoe.h" />
 		<Unit filename="Map/Stage.cpp" />

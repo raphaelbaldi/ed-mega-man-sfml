@@ -43,7 +43,7 @@ void PlayState::init()
     mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 130));
     mainCharacter->SetStage(currentStage);
 
-    mm::Bombombomb* enemy = new mm::Bombombomb(mainCharacter, currentStage, sf::Vector2f(30, 130));
+    mm::Bombombomb* enemy = new mm::Bombombomb(mainCharacter, currentStage, sf::Vector2f(10, 250));
     entities->push_back(enemy);
 
     // Push the main character last so it is always rendered on top of everything

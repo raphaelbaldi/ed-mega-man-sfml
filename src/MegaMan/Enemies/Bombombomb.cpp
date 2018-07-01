@@ -3,9 +3,9 @@
 mm::Bombombomb::Bombombomb(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition)
     : Enemy(player, stage, startPosition)
 {
-    sprite.load("content/enemies/bombombomb.png", 1, 12, 0, 0, 0, 0, 1, 1);
-
-    this->moveSpeed = 120;
+    sprite.load("content/enemies/bombombomb.png", 16, 12, 0, 0, 0, 0, 1, 1);
+    this->currentState = STATE_GOING_UP;
+    this->moveSpeed = 140;
 }
 
 mm::Bombombomb::~Bombombomb()
@@ -27,6 +27,7 @@ void mm::Bombombomb::Update(cgf::Game* game, bool updatePosition)
 
 void mm::Bombombomb::GenerateShoots(cgf::Game* game)
 {
+
 }
 
 void mm::Bombombomb::UpdatePosition(cgf::Game* game)
@@ -34,8 +35,9 @@ void mm::Bombombomb::UpdatePosition(cgf::Game* game)
     sprite.setYspeed(-moveSpeed);
     Entity::Update(game, true);
 
-    if (abs(sprite.getPosition().y - startPosition.y) > MAX_DELTA_HEIGTH) {
+    if (abs(sprite.getPosition().y - startPosition.y) > MAX_DELTA_HEIGHT) {
         GenerateShoots(game);
+        sprite.setVisible(false);
         currentState = STATE_EXPLODED;
     }
 }

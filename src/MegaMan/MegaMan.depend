@@ -1270,7 +1270,7 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1530465471 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
+1530466424 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
 	"Game.h"
 	"PlayState.h"
 	"InputManager.h"
@@ -3223,11 +3223,12 @@
 1530456617 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/BombMan.h
 	<Enemy.h>
 
-1530465291 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.cpp
+1530466305 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.cpp
 	"Bombombomb.h"
 
-1530465234 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
+1530466438 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
 	<Enemy.h>
+	<cmath>
 
 1530465205 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.cpp
 	"Enemy.h"
@@ -3276,7 +3277,7 @@
 1530465230 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//AdheringSuzy.h
 	<Enemy.h>
 
-1530465676 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Bombombomb.h
+1530466438 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Bombombomb.h
 	<Enemy.h>
 	<cmath>
 
