@@ -11,6 +11,9 @@ class KillerBomb : public Enemy {
         void Update(cgf::Game* game, bool updatePosition);
 
     protected:
+        float movementAmplitude;
+        float currentAngle;
+        float verticalMoveSpeed;
 
     private:
 };

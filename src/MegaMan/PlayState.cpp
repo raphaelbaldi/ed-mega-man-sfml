@@ -43,7 +43,7 @@ void PlayState::init()
     mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 160));
     mainCharacter->SetStage(currentStage);
 
-    mm::Kamadoma* enemy = new mm::Kamadoma(mainCharacter, currentStage, sf::Vector2f(400, 77));
+    mm::KillerBomb* enemy = new mm::KillerBomb(mainCharacter, currentStage, sf::Vector2f(100, 77));
     entities->push_back(enemy);
 
     // Push the main character last so it is always rendered on top of everything
