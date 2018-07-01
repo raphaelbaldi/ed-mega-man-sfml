@@ -1270,7 +1270,7 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1530474097 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
+1530476414 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/PlayState.cpp
 	"Game.h"
 	"PlayState.h"
 	"InputManager.h"
@@ -1282,7 +1282,6 @@
 	"KillerBomb.h"
 	"Mambu.h"
 	"ScrewDriver.h"
-	"SniperJoe.h"
 
 1525712390 source:/home/raphaelbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
 	<iostream>
@@ -3262,10 +3261,10 @@
 1530465244 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.h
 	<Enemy.h>
 
-1530465216 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
+1530478130 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
 	"ScrewDriver.h"
 
-1530465246 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
+1530478169 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
 	<Enemy.h>
 
 1530465218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.cpp
@@ -3293,7 +3292,7 @@
 1530465244 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Mambu.h
 	<Enemy.h>
 
-1530465246 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//ScrewDriver.h
+1530478520 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//ScrewDriver.h
 	<Enemy.h>
 
 1530465248 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//SniperJoe.h

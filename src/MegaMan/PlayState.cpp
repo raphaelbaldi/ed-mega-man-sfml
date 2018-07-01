@@ -9,7 +9,6 @@
 #include "KillerBomb.h"
 #include "Mambu.h"
 #include "ScrewDriver.h"
-#include "SniperJoe.h"
 
 PlayState PlayState::m_PlayState;
 
@@ -55,8 +54,11 @@ void PlayState::init()
     mm::KillerBomb* killerBomb = new mm::KillerBomb(mainCharacter, currentStage, sf::Vector2f(500, 77));
     entities->push_back(killerBomb);
 
+    mm::ScrewDriver* screwDriver = new mm::ScrewDriver(mainCharacter, currentStage, sf::Vector2f(50, 176));
+    entities->push_back(screwDriver);
+
     // Push the main character last so it is always rendered on top of everything
-    entities->push_back(mainCharacter);
+    //entities->push_back(mainCharacter);
 
     inputManager = cgf::InputManager::instance();
     inputManager->addKeyInput("left", sf::Keyboard::Left);
@@ -103,6 +105,7 @@ void PlayState::handleEvents(cgf::Game* game)
             (*entities)[i]->HandleEvents(inputManager);
         }
     }
+    mainCharacter->HandleEvents(inputManager);
 
     if(inputManager->testEvent("quit")) {
         game->quit();
@@ -123,6 +126,7 @@ void PlayState::update(cgf::Game* game)
             --entSize;
         }
     }
+    mainCharacter->Update(game, true);
 }
 
 void PlayState::draw(cgf::Game* game)
@@ -135,4 +139,5 @@ void PlayState::draw(cgf::Game* game)
             (*entities)[i]->Render(game->getScreen());
         }
     }
+    mainCharacter->Render(game->getScreen());
 }
