@@ -43,7 +43,7 @@ void PlayState::init()
     mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 160));
     mainCharacter->SetStage(currentStage);
 
-    mm::Gabyoall* enemy = new mm::Gabyoall(mainCharacter, currentStage, sf::Vector2f(400, 88));
+    mm::Kamadoma* enemy = new mm::Kamadoma(mainCharacter, currentStage, sf::Vector2f(400, 77));
     entities->push_back(enemy);
 
     // Push the main character last so it is always rendered on top of everything

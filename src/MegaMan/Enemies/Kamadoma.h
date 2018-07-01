@@ -11,6 +11,17 @@ class Kamadoma : public Enemy {
         void Update(cgf::Game* game, bool updatePosition);
 
     protected:
+        const static unsigned int STATE_IDLE = 1;
+        const static unsigned int STATE_JUMPING = 2;
+
+        const float IDLE_TIME = 1.5;
+
+        float idleTimer;
+
+        void Idle(cgf::Game* game);
+        void Jumping(cgf::Game* game);
+        void ComputeJump(cgf::Game* game);
+
 
     private:
 };

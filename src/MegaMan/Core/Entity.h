@@ -17,6 +17,8 @@ class Entity {
         virtual bool IsAlive();
 
     protected:
+        const float GRAVITY = 120;
+
         cgf::Sprite sprite;
         sf::Vector2f speed;
         sf::Vector2f position;
