@@ -108,7 +108,7 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
         y1 = (py) / tilesize.y;
         y2 = (py + i - 1) / tilesize.y;
 
-        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y) {
+        if (x1 >= 0 && x2 <= mapsize.x && y1 >= 0 && y2 <= mapsize.y) {
             if (vx > 0) {
                 // Trying to move right
                 int upRight   = GetCellFromMap(layer, x2 * tilesize.x, y1 * tilesize.y);
@@ -154,7 +154,7 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
         y1 = ((py + vy) / tilesize.y);
         y2 = ((py + vy + objsize.y-1) / tilesize.y);
 
-        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y) {
+        if (x1 >= 0 && x2 <= mapsize.x && y1 >= 0 && y2 <= mapsize.y) {
             if (vy > 0) {
                 // Trying to move down
                 int downLeft  = GetCellFromMap(layer, x1 * tilesize.x, y2 * tilesize.y);
@@ -196,10 +196,10 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
         if (!ignoreHorizontalMapBounds) {
             px = 0;
         }
-    } else if (px + objsize.x > (mapsize.x + 1) * tilesize.x) {
+    } else if (px + objsize.x >= mapsize.x * tilesize.x) {
         collision |= RIGHT_MAP_BOUND_COLLISION;
         if (!ignoreHorizontalMapBounds) {
-            px = ((mapsize.x + 1) * tilesize.x) - objsize.x;
+            px = (mapsize.x * tilesize.x) - objsize.x;
         }
     }
 
@@ -208,10 +208,10 @@ unsigned int mm::Stage::CheckCollision(uint8_t layer, cgf::Game* game, cgf::Spri
         if (!ignoreVerticalMapBounds) {
             py = 0;
         }
-    } else if(py + objsize.y > (mapsize.y + 1) * tilesize.y) {
+    } else if(py + objsize.y >= mapsize.y * tilesize.y) {
         collision |= DOWN_MAP_BOUND_COLLISION;
         if (!ignoreVerticalMapBounds) {
-            py = ((mapsize.y + 1) * tilesize.y) - objsize.y;
+            py = (mapsize.y * tilesize.y) - objsize.y;
         }
     }
 
