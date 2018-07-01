@@ -1238,11 +1238,11 @@
 	<tmx/MapLoader.h>
 	<string>
 
-1530457851 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
+1530479861 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/main.cpp
 	<iostream>
 	<cstdlib>
 	<string>
-	<cmath>
+	<math.h>
 	"Game.h"
 	"PlayState.h"
 
@@ -2528,16 +2528,16 @@
 1530465222 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Character.h
 	"Entity.h"
 
-1530470535 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
+1530480105 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.h
 	"Game.h"
 	"Sprite.h"
 	"InputManager.h"
 
-1530468788 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
+1530480590 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/Entity.cpp
 	"Entity.h"
 	<iostream>
 
-1530468063 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
+1530479496 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Core/PlayableCharacter.cpp
 	"PlayableCharacter.h"
 	<iostream>
 
@@ -3211,7 +3211,7 @@
 1530465230 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/AdheringSuzy.h
 	<Enemy.h>
 
-1530465235 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Enemy.h
+1530479010 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Enemy.h
 	<Entity.h>
 	"Game.h"
 	"PlayableCharacter.h"
@@ -3225,14 +3225,14 @@
 1530466765 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.cpp
 	"Bombombomb.h"
 
-1530466438 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
+1530479866 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Bombombomb.h
 	<Enemy.h>
-	<cmath>
+	<math.h>
 
-1530465205 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.cpp
+1530479023 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.cpp
 	"Enemy.h"
 
-1530465235 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.h
+1530479010 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Enemy.h
 	<Entity.h>
 	"Game.h"
 	"PlayableCharacter.h"
@@ -3261,11 +3261,13 @@
 1530465244 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Mambu.h
 	<Enemy.h>
 
-1530478130 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
+1530480948 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.cpp
 	"ScrewDriver.h"
 
-1530478169 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
+1530480998 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/ScrewDriver.h
 	<Enemy.h>
+	<math.h>
+	"Shoots/LinearShoot.h"
 
 1530465218 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/SniperJoe.cpp
 	"SniperJoe.h"
@@ -3276,9 +3278,9 @@
 1530465230 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//AdheringSuzy.h
 	<Enemy.h>
 
-1530466438 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Bombombomb.h
+1530479866 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Bombombomb.h
 	<Enemy.h>
-	<cmath>
+	<math.h>
 
 1530474507 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Gabyoall.h
 	<Enemy.h>
@@ -3292,8 +3294,10 @@
 1530465244 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Mambu.h
 	<Enemy.h>
 
-1530478520 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//ScrewDriver.h
+1530480998 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//ScrewDriver.h
 	<Enemy.h>
+	<math.h>
+	"Shoots/LinearShoot.h"
 
 1530465248 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//SniperJoe.h
 	<Enemy.h>
@@ -3303,4 +3307,16 @@
 
 1530465370 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Shoots/BombombombShoot.h
 	<Entity.h>
+
+1530480739 source:/home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Shoots/LinearShoot.cpp
+	"LinearShoot.h"
+	<iostream>
+
+1530479285 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies/Shoots/LinearShoot.h
+	<Entity.h>
+	"Game.h"
+
+1530479285 /home/rbaldi/projects/ed-mega-man-sfml/src/MegaMan/Enemies//Shoots/LinearShoot.h
+	<Entity.h>
+	"Game.h"
 

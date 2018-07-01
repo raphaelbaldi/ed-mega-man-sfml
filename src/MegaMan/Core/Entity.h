@@ -15,6 +15,8 @@ class Entity {
         virtual void HandleEvents(cgf::InputManager* inputManager);
         sf::Vector2f GetPosition();
         virtual bool IsAlive();
+        bool IsOnScreen(cgf::Game* game);
+        virtual bool IsDestroyed();
 
     protected:
         const float GRAVITY = 120;
@@ -29,8 +31,8 @@ class Entity {
         float maxJumpTime; // Hold jump to jump higher
         float fallSpeed;
         float bounceSpeed;
-        float shootRate;
-        float shootCooldown;
+        float shotRate;
+        float shotCooldown;
         bool isTakingDamage;
         bool isJumping;
         bool isFalling;
@@ -38,15 +40,13 @@ class Entity {
         bool isInvulnerable;
         bool isFacingLeft;
         bool isMoving;
-        bool isShooting;
+        bool isShoting;
         int currentLife;
         int totalLife;
         sf::Vector2f startPosition;
 
-        virtual void Animate();
-        virtual void Shoot();
         void SetAnimation(std::string newAnimation);
-        bool CanShoot();
+        virtual void Animate();
 
     private:
 };

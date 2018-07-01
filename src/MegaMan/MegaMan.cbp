@@ -146,8 +146,8 @@
 		<Unit filename="Enemies/ScrewDriver.h" />
 		<Unit filename="Enemies/Shoots/BombombombShoot.cpp" />
 		<Unit filename="Enemies/Shoots/BombombombShoot.h" />
-		<Unit filename="Enemies/SniperJoe.cpp" />
-		<Unit filename="Enemies/SniperJoe.h" />
+		<Unit filename="Enemies/Shoots/LinearShoot.cpp" />
+		<Unit filename="Enemies/Shoots/LinearShoot.h" />
 		<Unit filename="Map/Stage.cpp" />
 		<Unit filename="Map/Stage.h" />
 		<Unit filename="Map/StageArea.cpp" />

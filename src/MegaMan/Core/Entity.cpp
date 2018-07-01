@@ -12,8 +12,8 @@ mm::Entity::Entity(sf::Vector2f startPosition)
     maxJumpTime = 1;
     fallSpeed = 15;
     bounceSpeed = 15;
-    shootRate = 1;
-    shootCooldown = 1;
+    shotRate = 1;
+    shotCooldown = 1;
     isTakingDamage = false;
     isJumping = false;
     isFalling = false;
@@ -21,7 +21,7 @@ mm::Entity::Entity(sf::Vector2f startPosition)
     isInvulnerable = false;
     isFacingLeft = false;
     isMoving = false;
-    isShooting = false;
+    isShoting = false;
     currentAnimation = "";
     currentLife = 100;
     totalLife = 100;
@@ -61,6 +61,10 @@ void mm::Entity::HandleEvents(cgf::InputManager* inputManager)
 {
 }
 
+void mm::Entity::Animate()
+{
+}
+
 void mm::Entity::SetAnimation(std::string newAnimation)
 {
     if(newAnimation.compare(currentAnimation) == 0) {
@@ -73,15 +77,31 @@ void mm::Entity::SetAnimation(std::string newAnimation)
     currentAnimation = newAnimation;
 }
 
-void mm::Entity::Animate()
+bool mm::Entity::IsOnScreen(cgf::Game* game)
 {
+    if (nullptr == game) {
+        return true;
+    }
+
+    sf::View view = game->getScreen()->getView();
+
+    sf::Vector2u spriteSize = sprite.getSize();
+    spriteSize.x *= sprite.getScale().x;
+    spriteSize.y *= sprite.getScale().y;
+
+    float viewWSize = view.getSize().x / 2;
+    float viewVSize = view.getSize().y / 2;
+    if (sprite.getPosition().x + spriteSize.x < view.getCenter().x - viewWSize ||
+        sprite.getPosition().x > view.getCenter().x + viewWSize ||
+        sprite.getPosition().y + spriteSize.y < view.getCenter().y - viewVSize ||
+        sprite.getPosition().y > view.getCenter().y + viewVSize) {
+            return false;
+    }
+
+    return true;
 }
 
-void mm::Entity::Shoot()
+bool mm::Entity::IsDestroyed()
 {
-}
-
-bool mm::Entity::CanShoot()
-{
-    return shootCooldown <= 0;
+    return false;
 }

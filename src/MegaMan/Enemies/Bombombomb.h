@@ -2,7 +2,7 @@
 #define BOMBOMBOMB_H
 
 #include <Enemy.h>
-#include <cmath>
+#include <math.h>
 
 namespace mm {
 class Bombombomb : public Enemy {

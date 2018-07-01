@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <cmath>
+#include <math.h>
 
 #include "Game.h"
 #include "PlayState.h"

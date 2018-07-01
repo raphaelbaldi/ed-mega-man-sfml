@@ -77,9 +77,9 @@ void mm::PlayableCharacter::HandleEvents(cgf::InputManager* inputManager)
 
     if(inputManager->testEvent("shoot")) {
         Shoot();
-        isShooting = true;
+        isShoting = true;
     } else {
-        isShooting = false;
+        isShoting = false;
     }
 
     if(isTakingDamage) {
@@ -115,14 +115,14 @@ void mm::PlayableCharacter::Animate()
         newAnimation = "hit";
     } else {
         if(isJumping || isFalling) {
-            if(isShooting) {
+            if(isShoting) {
                 newAnimation = "jump-shoot";
             } else {
                 newAnimation = "jump";
             }
         } else {
             if(isClimbingStair) {
-                if(isShooting) {
+                if(isShoting) {
                     newAnimation = "stairs-shoot";
                 } else {
                     newAnimation = "stairs";
@@ -137,13 +137,13 @@ void mm::PlayableCharacter::Animate()
                 }
             } else {
                 if(moveDirection.x != 0) {
-                    if(isShooting) {
+                    if(isShoting) {
                         newAnimation = "run-shoot";
                     } else {
                         newAnimation = "run";
                     }
                 } else {
-                    if(isShooting) {
+                    if(isShoting) {
                         newAnimation = "shoot";
                     } else {
                         newAnimation = "idle";
