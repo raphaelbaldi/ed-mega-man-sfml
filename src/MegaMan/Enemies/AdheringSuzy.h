@@ -11,9 +11,9 @@ class AdheringSuzy : public Enemy {
         void Update(cgf::Game* game, bool updatePosition);
 
     protected:
-        const unsigned int STATE_IDLE = 1;
-        const unsigned int STATE_MOVE_LEFT = 2;
-        const unsigned int STATE_MOVE_RIGHT = 3;
+        const static unsigned int STATE_IDLE = 1;
+        const static unsigned int STATE_MOVE_LEFT = 2;
+        const static unsigned int STATE_MOVE_RIGHT = 3;
 
         const float IDLE_TIME = 5;
 

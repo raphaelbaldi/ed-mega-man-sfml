@@ -5,7 +5,6 @@ mm::Enemy::Enemy(PlayableCharacter* player, Stage* stage)
     //ctor
     this->player = player;
     this->stage = stage;
-    this->game = game;
 }
 
 mm::Enemy::~Enemy()

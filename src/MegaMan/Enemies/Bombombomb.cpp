@@ -15,10 +15,10 @@ void mm::Bombombomb::Update(cgf::Game* game, bool updatePosition)
 {
     switch(currentState) {
     case STATE_GOING_UP:
-        UpdatePosition(game);
+        this->UpdatePosition(game);
         break;
     case EXPLODED:
-        UpdateShoots(game);
+        this->UpdateShoots(game);
         break;
     }
 }

@@ -31,6 +31,11 @@ mm::Entity::~Entity()
 {
 }
 
+bool mm::Entity::IsAlive()
+{
+    return true;
+}
+
 void mm::Entity::Update(cgf::Game* game, bool updatePosition)
 {
     sprite.update(game->getUpdateInterval(), updatePosition);

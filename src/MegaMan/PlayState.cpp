@@ -100,9 +100,16 @@ void PlayState::handleEvents(cgf::Game* game)
 
 void PlayState::update(cgf::Game* game)
 {
-    for (int i = 0; i < entities->size(); i++) {
+    int i = 0;
+    int entSize = entities->size();
+    for (i = 0; i < entSize; ++i) {
         if (nullptr != (*entities)[i]) {
             (*entities)[i]->Update(game, true);
+        } else {
+            // Erase null values
+            entities->erase(entities->begin() + i);
+            --i;
+            --entSize;
         }
     }
 }
@@ -111,7 +118,8 @@ void PlayState::draw(cgf::Game* game)
 {
     currentStage->CenterOnPosition(game->getScreen(), mainCharacter->GetPosition());
     currentStage->Render(game->getScreen());
-    for (int i = 0; i < entities->size(); i++) {
+
+    for (int i = 0; i < entities->size(); ++i) {
         if (nullptr != (*entities)[i]) {
             (*entities)[i]->Render(game->getScreen());
         }

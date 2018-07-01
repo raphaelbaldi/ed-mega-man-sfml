@@ -14,6 +14,7 @@ class Entity {
         virtual void Update(cgf::Game* game, bool updatePosition);
         virtual void HandleEvents(cgf::InputManager* inputManager);
         sf::Vector2f GetPosition();
+        virtual bool IsAlive();
 
     protected:
         cgf::Sprite sprite;
