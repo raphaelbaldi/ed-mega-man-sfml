@@ -1,6 +1,7 @@
 #include "Character.h"
 
-mm::Character::Character()
+mm::Character::Character(sf::Vector2f startPosition)
+    : Entity(startPosition)
 {
 }
 

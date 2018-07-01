@@ -6,7 +6,7 @@
 namespace mm {
 class Kamadoma : public Enemy {
     public:
-        Kamadoma(PlayableCharacter* player, Stage* stage);
+        Kamadoma(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition);
         virtual ~Kamadoma();
         void Update(cgf::Game* game, bool updatePosition);
 

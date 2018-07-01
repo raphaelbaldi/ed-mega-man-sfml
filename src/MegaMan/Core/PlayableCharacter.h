@@ -8,7 +8,7 @@
 namespace mm {
 class PlayableCharacter : public Character {
     public:
-        PlayableCharacter();
+        PlayableCharacter(sf::Vector2f startPosition);
         virtual ~PlayableCharacter();
         void HandleEvents(cgf::InputManager* inputManager);
         void SetStage(mm::Stage* stage);

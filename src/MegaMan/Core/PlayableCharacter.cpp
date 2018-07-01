@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-mm::PlayableCharacter::PlayableCharacter()
+mm::PlayableCharacter::PlayableCharacter(sf::Vector2f startPosition)
+    : Character(startPosition)
 {
     // TODO: make it configurable
     sprite.load("content/characters/megaman/megaman.png", 32, 32, 0, 0, 0, 0, 5, 4);

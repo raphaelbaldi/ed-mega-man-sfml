@@ -8,7 +8,7 @@ namespace mm
 class BombombombShoot : public Entity
 {
     public:
-        BombombombShoot();
+        BombombombShoot(sf::Vector2f startPosition);
         virtual ~BombombombShoot();
 
     protected:

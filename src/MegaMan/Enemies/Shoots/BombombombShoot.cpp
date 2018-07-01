@@ -1,6 +1,7 @@
 #include "BombombombShoot.h"
 
-mm::BombombombShoot::BombombombShoot()
+mm::BombombombShoot::BombombombShoot(sf::Vector2f startPosition)
+    : Entity(startPosition)
 {
     //ctor
 }

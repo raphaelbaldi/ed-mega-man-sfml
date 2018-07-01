@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-mm::Entity::Entity()
+mm::Entity::Entity(sf::Vector2f startPosition)
 {
     speed.x = 0;
     speed.y = 0;
@@ -25,6 +25,9 @@ mm::Entity::Entity()
     currentAnimation = "";
     currentLife = 100;
     totalLife = 100;
+    sprite.setPosition(startPosition);
+    this->startPosition.x = startPosition.x;
+    this->startPosition.y = startPosition.y;
 }
 
 mm::Entity::~Entity()

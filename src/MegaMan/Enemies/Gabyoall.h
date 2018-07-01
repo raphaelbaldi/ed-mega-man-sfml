@@ -6,7 +6,7 @@
 namespace mm {
 class Gabyoall : public Enemy {
     public:
-        Gabyoall(PlayableCharacter* player, Stage* stage);
+        Gabyoall(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition);
         virtual ~Gabyoall();
         void Update(cgf::Game* game, bool updatePosition);
 

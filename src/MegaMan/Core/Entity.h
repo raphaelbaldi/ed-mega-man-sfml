@@ -8,7 +8,7 @@
 namespace mm {
 class Entity {
     public:
-        Entity();
+        Entity(sf::Vector2f startPosition);
         virtual ~Entity();
         virtual void Render(sf::RenderWindow* screen);
         virtual void Update(cgf::Game* game, bool updatePosition);
@@ -39,6 +39,7 @@ class Entity {
         bool isShooting;
         int currentLife;
         int totalLife;
+        sf::Vector2f startPosition;
 
         virtual void Animate();
         virtual void Shoot();

@@ -40,12 +40,14 @@ void PlayState::init()
     currentStage = new mm::Stage("content/level/bombman", areas, new sf::Color(57, 198, 255));
 
     entities = new std::vector<mm::Entity*>();
-    mainCharacter = new mm::PlayableCharacter();
+    mainCharacter = new mm::PlayableCharacter(sf::Vector2f(0, 130));
     mainCharacter->SetStage(currentStage);
-    entities->push_back(mainCharacter);
 
-    mm::AdheringSuzy* enemy = new mm::AdheringSuzy(mainCharacter, currentStage);
+    mm::Bombombomb* enemy = new mm::Bombombomb(mainCharacter, currentStage, sf::Vector2f(30, 130));
     entities->push_back(enemy);
+
+    // Push the main character last so it is always rendered on top of everything
+    entities->push_back(mainCharacter);
 
     inputManager = cgf::InputManager::instance();
     inputManager->addKeyInput("left", sf::Keyboard::Left);

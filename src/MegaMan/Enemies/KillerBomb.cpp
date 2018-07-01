@@ -1,7 +1,7 @@
 #include "KillerBomb.h"
 
-mm::KillerBomb::KillerBomb(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage)
+mm::KillerBomb::KillerBomb(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition)
+    : Enemy(player, stage, startPosition)
 {
     sprite.load("content/enemies/gabyoall.png", 16, 16, 0, 0, 0, 0, 1, 1);
 }

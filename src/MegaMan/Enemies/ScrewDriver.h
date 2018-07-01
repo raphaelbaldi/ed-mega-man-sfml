@@ -6,7 +6,7 @@
 namespace mm {
 class ScrewDriver : public Enemy {
     public:
-        ScrewDriver(PlayableCharacter* player, Stage* stage);
+        ScrewDriver(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition);
         virtual ~ScrewDriver();
         void Update(cgf::Game* game, bool updatePosition);
 

@@ -6,7 +6,7 @@
 namespace mm {
 class AdheringSuzy : public Enemy {
     public:
-        AdheringSuzy(PlayableCharacter* player, Stage* stage);
+        AdheringSuzy(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition);
         virtual ~AdheringSuzy();
         void Update(cgf::Game* game, bool updatePosition);
 

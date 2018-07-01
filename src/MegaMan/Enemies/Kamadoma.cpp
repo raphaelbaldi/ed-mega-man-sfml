@@ -1,7 +1,7 @@
 #include "Kamadoma.h"
 
-mm::Kamadoma::Kamadoma(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage)
+mm::Kamadoma::Kamadoma(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition)
+    : Enemy(player, stage, startPosition)
 {
     sprite.load("content/enemies/kamadoma.png", 28, 19, 0, 0, 0, 0, 2, 1);
 }

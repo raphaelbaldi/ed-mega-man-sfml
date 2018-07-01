@@ -6,7 +6,7 @@
 namespace mm {
 class Character : public Entity {
     public:
-        Character();
+        Character(sf::Vector2f startPosition);
         virtual ~Character();
 
     protected:

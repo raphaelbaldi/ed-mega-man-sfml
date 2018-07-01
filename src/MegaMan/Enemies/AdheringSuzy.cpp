@@ -1,7 +1,7 @@
 #include "AdheringSuzy.h"
 
-mm::AdheringSuzy::AdheringSuzy(PlayableCharacter* player, Stage* stage)
-    : Enemy(player, stage)
+mm::AdheringSuzy::AdheringSuzy(PlayableCharacter* player, Stage* stage, sf::Vector2f startPosition)
+    : Enemy(player, stage, startPosition)
 {
     sprite.load("content/enemies/adhering-suzy.png", 16, 16, 0, 0, 0, 0, 3, 1);
     sprite.setPosition(620, 130);
